@@ -1,16 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Deva Kothandapany</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="utf-8">
+
+	<!-- Stylesheets for icons, fonts, and custom stylesheet-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+	<!-- Custom JS file, see comment at bottom before <script> tag-->
+	<!--<script type="text/javascript" src="scripts.js"></script>-->
+	<title>Deva K.</title>
 </head>
 <body>
-	<img src="images/devakothandapany.jpg">
-	<h2>Hi! I'm Deva, let's connect!</h2>
-	<nav>
-		<a href="#">Who am I?</a>
-		<a href="#">What I do</a>
-		<a href="#">Things I like</a>
-	</nav>
+
+	<header>
+		<img src="images/deva.jpg" alt="devakothandapany">
+		<br>
+		<h1>Hi, I'm Deva. Let's connect!</h1>
+
+		<!-- Buttons jump to id passed to jumpTo() -->
+		<button onclick="jumpTo('aboutMe')">About Me</button>
+		<button onclick="jumpTo('journey')">Journey</button>
+		<button onclick="jumpTo('personal')">Personal</button>
+
+		<!-- Triggers modal -->
+		<button id="connect">Contact</button>
+	</header>
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+	  <!-- Modal content -->
+	  <div class="modalContent">
+	  	<div class="modalHeader">
+		    <span class="close">&times;</span>
+		    <h2>Connect</h2>
+	  	</div>
+	    <ul>
+	    	<li>
+	    		<i class="fas fa-envelope-square"></i>
+	    		dkothand@gmail.com
+	    	</li>
+	    	<li>
+	    		<a href="https://www.linkedin.com/in/devakothandapany/" target="_blank">
+    			<i class="fab fa-linkedin"></i>Linkedin</a>
+	    	</li>
+	    	<li>
+	    		<a href="https://github.com/Dkothand" target="_blank">
+    			<i class="fab fa-github"></i>Github</a>
+	    	</li>
+	    </ul>
+	  </div>
+
+	</div> 
+
+	<article id="aboutMe">
+		<h2>Who am I?</h2>
+		<p>
+			Hello there! My name is Deva Kothandapany. I'm 28 years old and currently working to break into software development industry. About a year ago, I was researching programs for a Master's in Bioinformatics. During that time, I discovered Python and with it, a passion for programming. It was at that time that I decided to make the switch from pursuing a Master's to starting a career in programming!
+		</p>
+	</article>
+
+	<article id="journey">
+		<h2>My journey so far</h2>
+		<p>
+			Over the past year I was able to complete CS50: Harvard's Intro to Computer Science that's available online. It was a very challenging course that exposed me to the basics of computer science and also a variety of languages. The first half of the program was taught in C, the latter half introduced newer languages such as Python and Javascript. You can check out my solutions to the 2018 problem sets on my Github(Click the "Connect!" button under my face!). In addition, I have been working on personal projects as well as lessons on freeCodeCamp.org to continue to grow and develop my skills in writing code. My goal is to make sure I'm using best practices when coding and to fill my Github with projects to show off my skills to potential employers.
+		</p>
+	</article>
+
+	<article id="personal">
+		<h2>When I'm not coding...</h2>
+		<p>
+			I consider myself a perpetual student. I love to learn new things! When I'm not reading a new book or trying to bake a loaf of bread, I enjoy working out and keeping myself healthy. Ask me about Brazilian Jiujitsu!
+		</p>
+	</article>
+
+<!-- Migrated JS to <script> tag due to Gmail blocking .js files from being sent as attachments -->
+<script type="text/javascript">
+	window.onload = function() {
+		// Get the modal
+		var modal = document.getElementById('myModal');
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("connect");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on the button, open the modal
+		btn.onclick = function() {
+		  modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		  if (event.target == modal) {
+		    modal.style.display = "none";
+		  }
+		}
+	}
+
+	// Function to jump to articles from button
+	function jumpTo(target) {
+		window.location.hash = target;
+	}
+</script>
 </body>
 </html>

@@ -1,0 +1,151 @@
+a {
+	color: inherit; /* Remove blue color from links */
+	text-decoration: none; /* Remove underline on links */
+}
+
+article {
+	max-width: 1000px;
+	color: white;
+	margin: 15% auto;
+	font-family: 'Cabin', sans-serif;
+	font-weight: bold;
+	padding: 0 10% 0 10%;
+}
+
+body {
+	background: #454245;
+	margin: 0 auto;
+}
+
+button {
+	background: #e1e0dd;
+	color: black;
+	font-size: 20px;
+	border: 0;
+	padding: 10px 22px;
+	margin: 10px 30px;
+	cursor: pointer;
+}
+
+h1, h2 {
+	font-family: 'Merriweather', serif;
+	text-decoration: underline; 
+	margin-top: 0;
+}
+
+h1 {
+	font-size: 70px;
+}
+
+h2 {
+	font-size: 42px;
+}
+
+header {
+	color: white;
+	text-align: center;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	background: url(images/background.jpg);
+	background-size: cover;
+}
+
+img {
+	max-width: 300px;
+	max-height: 300px;
+	margin: 5% auto;
+	border: 7px solid white;
+	border-radius: 25%;
+}
+
+li {
+	list-style-type: none; /* Remove bullet points */
+	padding: 10px;
+}
+
+p {
+	line-height: 4rem;
+	font-size: 28px;
+}
+
+/* Icons */
+i.fas,
+i.fab {
+	padding: 7px;
+	font-size: 20px;
+}
+
+.fa-linkedin {
+	color: rgb(0,119,181);
+}
+
+.fa-envelope-square {
+	color: #B23121;
+}
+
+ /* The modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modalHeader {
+	font-size: 32px;
+	text-align: center;
+}
+
+/* Modal Content/Box */
+.modalContent {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+	h1 {
+		font-size: 36px;
+	}
+
+	button {
+		display: inline-block;
+		margin: 5px;
+	}
+
+	li, ul {
+		padding: 5px;
+		font-size: 12px;
+	}
+
+	.modalHeader h2{
+		font-size: 28px;
+	}
+
+	.modalContent {
+		padding: 5px;
+	}
+
+}
