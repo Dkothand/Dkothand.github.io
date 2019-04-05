@@ -11,9 +11,13 @@
 
 
 // Current Task: 
-// Add html containers for fields
-// create input box and submit button
-// test populating containers with ONE result from search
+// Add html containers for fields <-- done
+// create input box and submit button <-- done
+// set up event listener for submit button to grab input <-- done
+
+// testing 'bojack horseman' in input field logs parseData values
+
+// test populating containers with ONE result from search <-- parseData returns one result name picture and stream information
 
 
 // API data
@@ -51,8 +55,11 @@
 
 const apiKey = "52122fb71bmsh21d596050a233b7p18b88ajsnf76ae4c3d8e5";
 
-
-
+// Gets text entered into search bar
+const getInput = () => {
+    const $input = $('input[type=text]').val();
+    return $input;
+}
 
 
 
@@ -72,27 +79,41 @@ const parseData = (results) => {
 
 
 $(() => {
-    $.ajax({
-        url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup",
-        type: 'GET',
-        dataType: "json",
-        data: {
-            // search term, what user will input
-            term: "bojack horseman",
-            // country, either us or uk
-            country: "us"
-        },
-        beforeSend: (xhr) => {
-            xhr.setRequestHeader(
-                "X-RapidAPI-Key", apiKey
-            );
-        }
-    }).then((data) => {
-        // returning data
-        // data = JSON.stringify(data);
-        // console.log(data.results);
-        parseData(data.results);
-    }, (error) => {
-        console.error(error);
-    })
+
+    $('input[type=submit]').on('click', getInput);
+
+
+
+
+
+
+
+
+
+
+
+
+    // $.ajax({
+    //     url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup",
+    //     type: 'GET',
+    //     dataType: "json",
+    //     data: {
+    //         // search term, what user will input
+    //         term: "bojack horseman",
+    //         // country, either us or uk
+    //         country: "us"
+    //     },
+    //     beforeSend: (xhr) => {
+    //         xhr.setRequestHeader(
+    //             "X-RapidAPI-Key", apiKey
+    //         );
+    //     }
+    // }).then((data) => {
+    //     // returning data
+    //     // data = JSON.stringify(data);
+    //     // console.log(data.results);
+    //     parseData(data.results);
+    // }, (error) => {
+    //     console.error(error);
+    // })
 })
