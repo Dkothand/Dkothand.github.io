@@ -55,6 +55,17 @@
 
 const apiKey = "52122fb71bmsh21d596050a233b7p18b88ajsnf76ae4c3d8e5";
 
+// Empties divs with rendered content
+const clearIds = () => {
+    $('#content-name').empty();
+    $('#content-img').empty();
+    $('#stream-name').empty();
+    $('#stream-url').empty();
+}
+
+
+
+
 // Gets text entered into search bar
 const getInput = () => {
     const $input = $('input[type=text]').val();
@@ -76,6 +87,9 @@ const parseData = (results) => {
     console.log(contentImg);
     console.log(streamName);
     console.log(streamURL);
+
+    // Clear previous search results
+    clearIds();
 
     $('#content-name').append(contentName);
     // $('#content-img').append(contentImg);
