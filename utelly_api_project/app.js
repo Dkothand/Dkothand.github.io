@@ -6,19 +6,23 @@
 
 // Link for more reading into getting unirest to work if I have time
 // https://stackoverflow.com/questions/19059580/client-on-node-uncaught-referenceerror-require-is-not-defined
+// https://www.youtube.com/watch?v=G3soxqHAEd8
 //============================================================================
 // test url :"https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=bojack&country=uk"
 
-
+/*************************************************************/
 // Current Task: 
-// Add html containers for fields <-- done
-// create input box and submit button <-- done
-// set up event listener for submit button to grab input <-- done
-// testing 'bojack horseman' in input field logs parseData values <-- done
-// test populating containers with ONE result from search <-- done
-// build img tag for content img <-- done
+// populate DOM with every stream option for ONE search result
+/*************************************************************/
 
-// clear content containers of previous search content when querying new search
+// return content and image
+// get every display_name and url from each object in locations array
+// loop through locations array
+// get element.display_name and element.url
+// append to container
+
+// The Office has 2 locations with us country <-- success
+// The Office has 8 locations with uk country <-- success
 
 // API data
     // data.results is array []
@@ -75,35 +79,44 @@ const getInput = () => {
 
 
 
-
 // Testing parsing correct data
 const parseData = (results) => {
+    console.log(results[0]);
     const contentName = results[0].name;
     const contentImg = results[0].picture;
-    const streamName = results[0].locations[0].display_name;
-    const streamURL = results[0].locations[0].url;
-
+    
     console.log(contentName);
     console.log(contentImg);
-    console.log(streamName);
-    console.log(streamURL);
-
+    
     // Clear previous search results
     clearIds();
-
+    
     $('#content-name').append(contentName);
     // $('#content-img').append(contentImg);
-
+    
     const $img = $('<img>')
-        .attr('src', contentImg)
-        .attr('alt', contentName);
-
+    .attr('src', contentImg)
+    .attr('alt', contentName);
+    
     $('#content-img').append($img);
+    
+    // locations array
+    const locations = results[0].locations;
+    // for each object in array
+    for (let stream of locations) {
+        const streamName = stream.display_name;
+        const streamURL = stream.url;
+        
+        console.log(streamName);
+        console.log(streamURL);
+
+        // Append each to divs
+        $('#stream-name').append(streamName);
+        $('#stream-url').append(streamURL);
+    }
+    
 
 
-
-    $('#stream-name').append(streamName);
-    $('#stream-url').append(streamURL);
 }
 
 
