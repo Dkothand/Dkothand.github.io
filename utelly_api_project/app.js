@@ -12,17 +12,19 @@
 
 /*************************************************************/
 // Current Task: 
-// populate DOM with every stream option for ONE search result
+// populate DOM with every result <-- success
 /*************************************************************/
 
-// return content and image
-// get every display_name and url from each object in locations array
-// loop through locations array
-// get element.display_name and element.url
-// append to container
+// parseData
+    // get results
+    // for each element of results array
+    // append element.name
+    // append element.picture
+        // for each location of results array
+            // append location.display_name
+            // append location.url
 
-// The Office has 2 locations with us country <-- success
-// The Office has 8 locations with uk country <-- success
+// 'the office' returns 5 results in country=uk <-- success
 
 // API data
     // data.results is array []
@@ -61,10 +63,7 @@ const apiKey = "52122fb71bmsh21d596050a233b7p18b88ajsnf76ae4c3d8e5";
 
 // Empties divs with rendered content
 const clearIds = () => {
-    $('#content-name').empty();
-    $('#content-img').empty();
-    $('#stream-name').empty();
-    $('#stream-url').empty();
+    $('.container').empty();
 }
 
 
@@ -81,39 +80,67 @@ const getInput = () => {
 
 // Testing parsing correct data
 const parseData = (results) => {
-    console.log(results[0]);
-    const contentName = results[0].name;
-    const contentImg = results[0].picture;
+    // Clears previous search results
+    clearIds();
+    console.log(results);
+
+    // parseData
+    // get results
+    // for each element of results array
+    // append element.name
+    // append element.picture
+        // for each location of results array
+            // append location.display_name
+            // append location.url
+
+    // loop through results array
+    // content is an object
+    for (let content of results) {
+        const contentName = content.name;
+        const contentImg = content.picture; // link to image
+
+        // array of stream objects
+        const locations = content.locations;
+
+        $('.container').append(contentName);
+
+
+        const $img = $('<img>')
+        .attr('src', contentImg)
+        .attr('alt', contentName);
+
+        $('.container').append($img);
+
+        // for each object in array
+        for (let stream of locations) {
+            const streamName = stream.display_name;
+            const streamURL = stream.url;
+            
+            console.log(streamName);
+            console.log(streamURL);
     
-    console.log(contentName);
-    console.log(contentImg);
+            // Append each to div
+            $('.container').append(streamName);
+            $('.container').append(streamURL);
+        }
+    }
+    
+    // console.log(contentName);
+    // console.log(contentImg);
     
     // Clear previous search results
-    clearIds();
+    // clearIds();
     
-    $('#content-name').append(contentName);
-    // $('#content-img').append(contentImg);
+    // $('#content-name').append(contentName);
+    // // $('#content-img').append(contentImg);
     
-    const $img = $('<img>')
-    .attr('src', contentImg)
-    .attr('alt', contentName);
+    // const $img = $('<img>')
+    // .attr('src', contentImg)
+    // .attr('alt', contentName);
     
-    $('#content-img').append($img);
+    // $('#content-img').append($img);
     
     // locations array
-    const locations = results[0].locations;
-    // for each object in array
-    for (let stream of locations) {
-        const streamName = stream.display_name;
-        const streamURL = stream.url;
-        
-        console.log(streamName);
-        console.log(streamURL);
-
-        // Append each to divs
-        $('#stream-name').append(streamName);
-        $('#stream-url').append(streamURL);
-    }
     
 
 
@@ -133,7 +160,7 @@ const getApiData = () => {
             // search term, what user will input
             term: searchTerm,
             // country, either us or uk
-            country: "us"
+            country: "uk"
         },
         beforeSend: (xhr) => {
             xhr.setRequestHeader(
