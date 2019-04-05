@@ -15,9 +15,10 @@
 // create input box and submit button <-- done
 // set up event listener for submit button to grab input <-- done
 // testing 'bojack horseman' in input field logs parseData values <-- done
+// test populating containers with ONE result from search <-- done
+// build img tag for content img <-- done
 
-// test populating containers with ONE result from search <-- parseData returns one result name picture and stream information
-
+// clear content containers of previous search content when querying new search
 
 // API data
     // data.results is array []
@@ -66,10 +67,29 @@ const getInput = () => {
 
 // Testing parsing correct data
 const parseData = (results) => {
-    console.log(results[0].name);
-    console.log(results[0].picture);
-    console.log(results[0].locations[0].display_name);
-    console.log(results[0].locations[0].url);
+    const contentName = results[0].name;
+    const contentImg = results[0].picture;
+    const streamName = results[0].locations[0].display_name;
+    const streamURL = results[0].locations[0].url;
+
+    console.log(contentName);
+    console.log(contentImg);
+    console.log(streamName);
+    console.log(streamURL);
+
+    $('#content-name').append(contentName);
+    // $('#content-img').append(contentImg);
+
+    const $img = $('<img>')
+        .attr('src', contentImg)
+        .attr('alt', contentName);
+
+    $('#content-img').append($img);
+
+
+
+    $('#stream-name').append(streamName);
+    $('#stream-url').append(streamURL);
 }
 
 
@@ -105,7 +125,5 @@ const getApiData = () => {
 
 
 $(() => {
-
     $('input[type=submit]').on('click', getApiData);
-
 })
