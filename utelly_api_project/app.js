@@ -14,8 +14,7 @@
 // Add html containers for fields <-- done
 // create input box and submit button <-- done
 // set up event listener for submit button to grab input <-- done
-
-// testing 'bojack horseman' in input field logs parseData values
+// testing 'bojack horseman' in input field logs parseData values <-- done
 
 // test populating containers with ONE result from search <-- parseData returns one result name picture and stream information
 
@@ -74,46 +73,39 @@ const parseData = (results) => {
 }
 
 
+// API call with entered text as search term
+const getApiData = () => {
 
+    const searchTerm = getInput();
 
+    $.ajax({
+        url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup",
+        type: 'GET',
+        dataType: "json",
+        data: {
+            // search term, what user will input
+            term: searchTerm,
+            // country, either us or uk
+            country: "us"
+        },
+        beforeSend: (xhr) => {
+            xhr.setRequestHeader(
+                "X-RapidAPI-Key", apiKey
+            );
+        }
+    }).then((data) => {
+        // returning data
+        // data = JSON.stringify(data);
+        // console.log(data.results);
+        parseData(data.results);
+    }, (error) => {
+        console.error(error);
+    })
+}
 
 
 $(() => {
 
-    $('input[type=submit]').on('click', getInput);
+    $('input[type=submit]').on('click', getApiData);
 
-
-
-
-
-
-
-
-
-
-
-
-    // $.ajax({
-    //     url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup",
-    //     type: 'GET',
-    //     dataType: "json",
-    //     data: {
-    //         // search term, what user will input
-    //         term: "bojack horseman",
-    //         // country, either us or uk
-    //         country: "us"
-    //     },
-    //     beforeSend: (xhr) => {
-    //         xhr.setRequestHeader(
-    //             "X-RapidAPI-Key", apiKey
-    //         );
-    //     }
-    // }).then((data) => {
-    //     // returning data
-    //     // data = JSON.stringify(data);
-    //     // console.log(data.results);
-    //     parseData(data.results);
-    // }, (error) => {
-    //     console.error(error);
-    // })
 })
