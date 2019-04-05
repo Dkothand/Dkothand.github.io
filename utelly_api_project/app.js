@@ -12,7 +12,7 @@
 
 /*************************************************************/
 // Current Task: 
-// populate DOM with every result <-- success
+// dynamically render search results to DOM structured for styling as cards
 /*************************************************************/
 
 // parseData
