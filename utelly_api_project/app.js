@@ -12,7 +12,7 @@
 
 /*************************************************************/
 // Current Task: 
-// dynamically render search results to DOM structured for styling as cards
+// Begin CSS styling
 /*************************************************************/
 
 // parseData
@@ -149,5 +149,8 @@ const getApiData = () => {
 
 
 $(() => {
-    $('input[type=submit]').on('click', getApiData);
+    // testing card appearance, change callback to 'getApiData' for normal functionality
+    $('input[type=submit]').on('click', () => {
+        $('.card').toggle();
+    });
 })
