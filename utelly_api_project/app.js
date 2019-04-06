@@ -16,35 +16,26 @@
 /*************************************************************/
 
 // parseData
-    // get results
-    // for each element of results array
-    // append element.name
-    // append element.picture
-        // for each location of results array
-            // append location.display_name
-            // append location.url
-
-// 'the office' returns 5 results in country=uk <-- success
 
 // API data
-    // data.results is array []
-    // each element in array is an object
-    // object properties:
+// data.results is array []
+// each element in array is an object
+// object properties:
 
-        //id: identifier for that movie/tv show
-        //locations: array [] of objects {}
-            // each object is a streaming option
-            // object properties:
+//id: identifier for that movie/tv show
+//locations: array [] of objects {}
+// each object is a streaming option
+// object properties:
 
-                //display_name: Name of streaming service "Netflix"
-                //icon: Image of streaming service
-                //id: identifier of service
-                //name: more specific name "NetflixUS"
-                //url: url of movie/show on service site (location on Netflix site)
+//display_name: Name of streaming service "Netflix"
+//icon: Image of streaming service
+//id: identifier of service
+//name: more specific name "NetflixUS"
+//url: url of movie/show on service site (location on Netflix site)
 
-        //name: name of movie/tv show "Bojack Horseman"
-        //picture: image of movie/tv show
-        //weight: no idea what this is for
+//name: name of movie/tv show "Bojack Horseman"
+//picture: image of movie/tv show
+//weight: no idea what this is for
 
 // Content name: data.results[0].name
 // Content picture: data.results[0].picture
@@ -83,67 +74,46 @@ const parseData = (results) => {
     // Clears previous search results
     clearIds();
     console.log(results);
-
-    // parseData
-    // get results
-    // for each element of results array
-    // append element.name
-    // append element.picture
-        // for each location of results array
-            // append location.display_name
-            // append location.url
-
-    // loop through results array
-    // content is an object
+    
+    // // loop through results array
+    // // content is an object
     for (let content of results) {
-        const contentName = content.name;
+        const contentName = content.name; //content name
         const contentImg = content.picture; // link to image
-
-        // array of stream objects
+        
+    //     // array of stream objects
         const locations = content.locations;
-
-        $('.container').append(contentName);
-
-
+        
+        // Build image tag of content image
         const $img = $('<img>')
         .attr('src', contentImg)
         .attr('alt', contentName);
 
-        $('.container').append($img);
+        const $cardDiv = $('<div>').attr('class', 'card');
+        $cardDiv.append(`<h5>${contentName}</h5>`);
 
-        // for each object in array
+        const $imgDiv = $('<div>').attr('class', 'content-img');
+        $imgDiv.append($img);
+        $cardDiv.append($imgDiv);
+
+        $cardDiv.append(`<h5>Streaming on:</h5>`);
+
+        const $ulStreamLinks = $('<ul>');
+
         for (let stream of locations) {
             const streamName = stream.display_name;
             const streamURL = stream.url;
-            
-            console.log(streamName);
-            console.log(streamURL);
-    
-            // Append each to div
-            $('.container').append(streamName);
-            $('.container').append(streamURL);
+
+
+            const $aStreamLink = $('<a>').attr('href', streamURL)
+                .text(streamName);
+            const $listItem = $('<li>').append($aStreamLink);            
+            $ulStreamLinks.append($listItem);
         }
+
+        $cardDiv.append($ulStreamLinks);
+        $('.container').append($cardDiv);
     }
-    
-    // console.log(contentName);
-    // console.log(contentImg);
-    
-    // Clear previous search results
-    // clearIds();
-    
-    // $('#content-name').append(contentName);
-    // // $('#content-img').append(contentImg);
-    
-    // const $img = $('<img>')
-    // .attr('src', contentImg)
-    // .attr('alt', contentName);
-    
-    // $('#content-img').append($img);
-    
-    // locations array
-    
-
-
 }
 
 
