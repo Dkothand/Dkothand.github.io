@@ -3,5 +3,29 @@
 }
 
 header {
+    width: 90%;
     text-align: center;
+    margin: auto;
+    margin-top: 25%;
+    margin-bottom: 10%;
+}
+
+/* Name */
+h1 {
+    font-size: 64px;
+}
+
+/* Description text*/
+h4 {
+    font-size: 28px;
+}
+
+/* Search Bar*/
+input[type=text] {
+    padding: 20px 60px;
+}
+
+/* Search Button*/
+input[type=submit] {
+    padding: 20px 10px;
 }
