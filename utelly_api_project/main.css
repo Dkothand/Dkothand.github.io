@@ -6,7 +6,7 @@ header {
     width: 90%;
     text-align: center;
     margin: auto;
-    margin-top: 25%;
+    margin-top: 40%;
     margin-bottom: 10%;
 }
 
@@ -28,4 +28,28 @@ input[type=text] {
 /* Search Button*/
 input[type=submit] {
     padding: 20px 10px;
+}
+
+img {
+    width: 100%;
+}
+
+/* .container div - all div.cards populate inside*/
+.container {
+    /* Flexbox */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* content div */
+/* display: none  to replicate content populating div.container */
+.card {
+    /* display: none; */
+    /* Fill 90% of .container width */
+    flex-basis: 90%;
+    /* Centering */
+    margin: auto;
+    /* Center text in .card */
+    text-align: center;
+    
 }
