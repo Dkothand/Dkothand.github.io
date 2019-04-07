@@ -7,7 +7,7 @@ header {
     width: 90%;
     text-align: center;
     margin: auto;
-    margin-top: 40%;
+    margin-top: 30%;
     margin-bottom: 10%;
 }
 
@@ -20,6 +20,10 @@ h1 {
 h4 {
     font-size: 28px;
     margin: auto;
+}
+
+h5 {
+    font-size: 32px;
 }
 
 /* Search Bar*/
@@ -63,7 +67,24 @@ ul {
     /* Centering */
     /* Note flexbox doesn't collapse margins, space between each card is 10% + 10% */
     margin: 10% 5%;
+
+    padding: 0 2%;
+
     /* Center text in .card */
     text-align: center;
     
+}
+
+@media (min-width: 800px) {
+    /* two-columns */
+    .card {
+        flex-basis: 35%;
+    }
+}
+
+@media (min-width: 1300px) {
+    /* three columns */
+    .card {
+        flex-basis: 15%;
+    }
 }

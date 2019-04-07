@@ -12,14 +12,28 @@
 
 /*************************************************************/
 // Current Task: 
+
+//  - Add media query min-width: 700px
+//      - at query, two columns of cards
+//  - Add media query min-width: 1300px
+//      - at query, three columns of cards
+
+
+// media queries - space (margins) between cards is too wide when you hit multiple columns across
+
+// adjust margins for media queries
+
+
+
+//  - Implement name (StreamSift?)
+//  - change directory name to app name
+//  - Research fonts
+// ----------------- done ------------------------
 // CSS styling
 //  - Create space between content cards
 //      - decrease flex-basis and add top/bottom margins
 //  - Size content text appropriately
 //  - Test adding a Results header that appears after button click(query)
-//  - Implement name (StreamSift?)
-//  - change directory name to app name
-//  - Research fonts
 /*************************************************************/
 
 // parseData
@@ -165,5 +179,5 @@ $(() => {
 
 // () => {
 //     $('.card').toggle();
-//      $('.results).toggle();
+//      $('.results').toggle();
 // }
