@@ -19,6 +19,7 @@ h1 {
 /* Description text*/
 h4 {
     font-size: 28px;
+    margin: auto;
 }
 
 /* Search Bar*/
@@ -44,6 +45,11 @@ img {
 
 /* content div */
 /* display: none  to replicate content populating div.container */
+
+.card, .results {
+    display: none;
+}
+
 .card {
     /* display: none; */
     /* Fill 90% of .container width */

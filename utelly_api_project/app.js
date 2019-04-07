@@ -12,7 +12,14 @@
 
 /*************************************************************/
 // Current Task: 
-// Begin CSS styling
+// CSS styling
+//  - Create space between content cards
+//      - decrease flex-basis and add top/bottom margins
+//  - Size content text appropriately
+//  - Test adding a Results header that appears after button click(query)
+//  - Implement name (StreamSift?)
+//  - change directory name to app name
+//  - Research fonts
 /*************************************************************/
 
 // parseData
@@ -151,6 +158,12 @@ const getApiData = () => {
 $(() => {
     // testing card appearance, change callback to 'getApiData' for normal functionality
     $('input[type=submit]').on('click', () => {
-        $('.card').toggle();
-    });
+            $('.card').toggle();
+            $('.results').toggle();
+        });
 })
+
+// () => {
+//     $('.card').toggle();
+//      $('.results).toggle();
+// }
