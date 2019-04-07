@@ -36,6 +36,11 @@ img {
     width: 100%;
 }
 
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
 /* .container div - all div.cards populate inside*/
 .container {
     /* Flexbox */
@@ -46,6 +51,7 @@ img {
 /* content div */
 /* display: none  to replicate content populating div.container */
 
+/*Comment out when testing api call*/
 .card, .results {
     display: none;
 }
