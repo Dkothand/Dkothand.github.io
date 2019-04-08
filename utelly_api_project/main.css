@@ -52,7 +52,8 @@ ul {
     flex-wrap: wrap;
     padding: 5%;
     /* Centering */
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
 }
 
 /* content div */
