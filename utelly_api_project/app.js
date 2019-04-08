@@ -12,29 +12,38 @@
 
 /*************************************************************/
 // Current Task: 
+// CSS
+// create 'hovered class' for cards
 
-//  - Add media query min-width: 700px
-//      - at query, two columns of cards
-//  - Add media query min-width: 1300px
-//      - at query, three columns of cards
+// JS 
+// create array to push results into
+    // can check for duplicates this way
 
+    // 'Entourage' should return one result <-- done
 
-// media queries - space (margins) between cards is too wide when you hit multiple columns across
+/*********** Spiderman Homecoming is a duplicate, but the streams are different, find a way to merge location arrays **************************************/
 
-// adjust margins for media queries
+// do the same thing that I did for content.name for stream.display_name
+// put stream objects into new array and build card with hybrid results array and stream objects array
 
+// add stream icon for stream lists
+
+// add conditional for blank images
+    // add stock image in it's place
+
+    // 'bojack horseman' should return two cards with last one being not found image
+
+// add listener to cards for on:hover, toggle hovered class
+    // content generation should append streams to hovered class
 
 
 //  - Implement name (StreamSift?)
 //  - change directory name to app name
 //  - Research fonts
+    // Cabin and Lobster again?
+    // text shadow
 // ----------------- done ------------------------
-// CSS styling
-//  - Create space between content cards
-//      - decrease flex-basis and add top/bottom margins
-//  - Size content text appropriately
-//  - Test adding a Results header that appears after button click(query)
-/*************************************************************/
+//*************************************************************/
 
 // parseData
 
@@ -70,7 +79,7 @@
 
 
 
-
+const apiURL = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup";
 const apiKey = "52122fb71bmsh21d596050a233b7p18b88ajsnf76ae4c3d8e5";
 
 // Empties divs with rendered content
@@ -87,7 +96,107 @@ const getInput = () => {
     return $input;
 }
 
+// const createCardContent = (results) => {
 
+        // this giant loop works when in parseData
+
+//     for (let content of results) {
+//         const contentName = content.name; //content name
+//         const contentImg = content.picture; // link to image
+        
+//     //     // array of stream objects
+//         const locations = content.locations;
+        
+//         // Build image tag of content image
+//         const $img = $('<img>')
+//         .attr('src', contentImg)
+//         .attr('alt', contentName);
+
+//         const $cardDiv = $('<div>').attr('class', 'card');
+//         $cardDiv.append(`<h5>${contentName}</h5>`);
+
+//         const $imgDiv = $('<div>').attr('class', 'content-img');
+//         $imgDiv.append($img);
+//         $cardDiv.append($imgDiv);
+
+//         $cardDiv.append(`<h5>Streaming on:</h5>`);
+
+//         const $ulStreamLinks = $('<ul>');
+
+//         for (let stream of locations) {
+//             const streamName = stream.display_name;
+//             const streamURL = stream.url;
+
+
+//             const $aStreamLink = $('<a>').attr('href', streamURL)
+//                 .text(streamName);
+//             const $listItem = $('<li>').append($aStreamLink);            
+//             $ulStreamLinks.append($listItem);
+//         }
+
+//         $cardDiv.append($ulStreamLinks);
+//         $('.container').append($cardDiv);
+//     }
+// }
+
+const renderObject = (object) => {
+    const contentName = object.name;
+    const contentImg = object.picture;
+    const contentLocations = object.locations;
+
+    // Build image tag of content image
+    const $img = $('<img>')
+    .attr('src', contentImg)
+    .attr('alt', contentName);
+
+    const $cardDiv = $('<div>').attr('class', 'card');
+    $cardDiv.append(`<h5>${contentName}</h5>`);
+
+    const $imgDiv = $('<div>').attr('class', 'content-img');
+    $imgDiv.append($img);
+    $cardDiv.append($imgDiv);
+
+    $cardDiv.append(`<h5>Streaming on:</h5>`);
+
+    const $ulStreamLinks = $('<ul>');
+
+    for (let stream of contentLocations) {
+        const streamName = stream.display_name;
+        const streamURL = stream.url;
+
+
+        const $aStreamLink = $('<a>').attr('href', streamURL)
+            .text(streamName);
+        const $listItem = $('<li>').append($aStreamLink);            
+        $ulStreamLinks.append($listItem);
+    }
+
+    $cardDiv.append($ulStreamLinks);
+    $('.container').append($cardDiv);
+}
+/*** Render unique content to DOM, trying to avoid repeats */
+
+// build array of unique names <-- done
+// function with array and results array
+// for obj in results
+    // if obj.name is in array
+        // buildCard()
+        // array.splice(indexOf(obj.name), 1)
+
+// takes two arrays
+const makeUniqueContent = (array, results) => {
+    // results array of objects
+    console.log(results)
+    for (content of results) {
+        console.log(content.name) // logs undefined
+        let presentInBoth = array.indexOf(content.name)
+        if (presentInBoth >= 0) {
+            // build div.card of current object
+            renderObject(content);
+            array.splice(presentInBoth, 1);
+        }
+    }
+}
 
 
 // Testing parsing correct data
@@ -96,45 +205,21 @@ const parseData = (results) => {
     clearIds();
     console.log(results);
     
+    const contentNameArray = [];
     // // loop through results array
     // // content is an object
+
+    // fills array with unique names
     for (let content of results) {
-        const contentName = content.name; //content name
-        const contentImg = content.picture; // link to image
-        
-    //     // array of stream objects
-        const locations = content.locations;
-        
-        // Build image tag of content image
-        const $img = $('<img>')
-        .attr('src', contentImg)
-        .attr('alt', contentName);
-
-        const $cardDiv = $('<div>').attr('class', 'card');
-        $cardDiv.append(`<h5>${contentName}</h5>`);
-
-        const $imgDiv = $('<div>').attr('class', 'content-img');
-        $imgDiv.append($img);
-        $cardDiv.append($imgDiv);
-
-        $cardDiv.append(`<h5>Streaming on:</h5>`);
-
-        const $ulStreamLinks = $('<ul>');
-
-        for (let stream of locations) {
-            const streamName = stream.display_name;
-            const streamURL = stream.url;
-
-
-            const $aStreamLink = $('<a>').attr('href', streamURL)
-                .text(streamName);
-            const $listItem = $('<li>').append($aStreamLink);            
-            $ulStreamLinks.append($listItem);
+        const contentName = content.name;
+        if (contentNameArray.indexOf(contentName) === -1) {
+            contentNameArray.push(contentName);
         }
-
-        $cardDiv.append($ulStreamLinks);
-        $('.container').append($cardDiv);
     }
+
+    console.log(contentNameArray);
+
+    makeUniqueContent(contentNameArray, results);
 }
 
 
@@ -144,14 +229,14 @@ const getApiData = () => {
     const searchTerm = getInput();
 
     $.ajax({
-        url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup",
+        url: apiURL,
         type: 'GET',
         dataType: "json",
         data: {
             // search term, what user will input
             term: searchTerm,
             // country, either us or uk
-            country: "uk"
+            country: "us"
         },
         beforeSend: (xhr) => {
             xhr.setRequestHeader(
@@ -171,10 +256,7 @@ const getApiData = () => {
 
 $(() => {
     // testing card appearance, change callback to 'getApiData' for normal functionality
-    $('input[type=submit]').on('click', () => {
-            $('.card').toggle();
-            $('.results').toggle();
-        });
+    $('input[type=submit]').on('click', getApiData);
 })
 
 // () => {
