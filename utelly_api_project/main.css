@@ -7,7 +7,7 @@ header {
     width: 90%;
     text-align: center;
     margin: auto;
-    margin-top: 20%;
+    margin-top: 25%;
     margin-bottom: 10%;
 }
 
@@ -71,7 +71,7 @@ ul {
 
     padding: 0 2%;
 
-    margin-top: 20px;
+    margin-top: 10%;
 
     /* Center text in .card */
     text-align: center;
@@ -120,29 +120,23 @@ ul {
 }
 
 @media (min-width: 800px) {
-    body {
-        background-color: red;
-    }
     /* two-columns */
     .card {
         flex-basis: 40%;
     }
 
     header {
-        margin-top: 15%;
+        margin-top: 20%;
     }
 }
 
 @media (min-width: 1300px) {
-    body {
-        background-color: blue;
-    }
     /* three columns */
     .card {
         flex-basis: 25%;
     }
 
     header {
-        margin-top: 10%;
+        margin-top: 15%;
     }
 }
