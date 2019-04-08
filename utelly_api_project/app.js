@@ -11,11 +11,13 @@
 // test url :"https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=bojack&country=uk"
 
 /*************************************************************/
-// Current Task: 
+// Current Tasks: 
 
 // nav bar should have modal/scroll something dynamic that manipulates the DOM
 // Style modal
 // Add text to modal content
+
+// Add buttons to choose 'us' or 'uk' country for search
 
 
 
@@ -49,6 +51,9 @@
 //  - Research fonts
     // Cabin and Lobster again?
     // text shadow
+
+// Sky blue background, white h1 text with big text shadow
+// search button probably a yellow or oranges
 // ----------------- done ------------------------
 //*************************************************************/
 
