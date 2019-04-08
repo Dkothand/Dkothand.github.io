@@ -13,6 +13,7 @@
 /*************************************************************/
 // Current Task: 
 
+// nav bar should have modal/scroll something dynamic that manipulates the DOM
 // Style modal
 // Add text to modal content
 
@@ -24,7 +25,6 @@
 // CSS
 // create 'hovered class' for cards
 
-// nav bar should have modal/scroll something dynamic that manipulates the DOM
 
 // JS 
 // create array to push results into
@@ -90,9 +90,10 @@ const apiURL = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.co
 const apiKey = "52122fb71bmsh21d596050a233b7p18b88ajsnf76ae4c3d8e5";
 const imageNotFound = "https://dubsism.files.wordpress.com/2017/12/image-not-found.png";
 
-// Empties divs with rendered content
+// Empties divs with rendered content and clears input text box
 const clearIds = () => {
     $('.container').empty();
+    $('input[type=text]').val('');
 }
 
 
@@ -166,7 +167,7 @@ const getInput = () => {
 // Modal show and hide functions
 const showModal = () => {
     $('.modal').css('display', 'block');
-}
+};
 
 const hideModal = () => {
     $('.modal').css('display', 'none');
@@ -255,7 +256,7 @@ const getApiData = () => {
             // search term, what user will input
             term: searchTerm
             // country, either us or uk
-            // none returns both
+            // none returns both, maybe not
             // country: "us"
         },
         beforeSend: (xhr) => {
