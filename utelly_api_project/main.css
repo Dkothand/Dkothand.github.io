@@ -81,13 +81,13 @@ ul {
 @media (min-width: 800px) {
     /* two-columns */
     .card {
-        flex-basis: 35%;
+        flex-basis: 40%;
     }
 }
 
 @media (min-width: 1300px) {
     /* three columns */
     .card {
-        flex-basis: 15%;
+        flex-basis: 25%;
     }
 }
