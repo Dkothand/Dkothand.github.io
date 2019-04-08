@@ -78,22 +78,35 @@ ul {
     
 }
 
+/* .nav-bar {
+    background-color goes here
+} */
+
+
+
 .nav-bar ul {
-    /* background-color goes here*/
+    /* Set width to mirror header, keeps content lined up with header content */
+    width: 90%;
     list-style-type: none;
-    margin: 0;
-    padding: 10px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    /* padding: 5%; */
 }
 
 .nav-bar li {
     display: inline-block;
+    padding: 10px;
+    margin-right: 10px;
+
 }
 
 .nav-bar li a {
     /*inline block keeps padding inside nav but also on same line*/
     display: inline-block;
     /* padding makes whole area clickable*/
-    padding: 8px;
+    padding: 10px;
+    /* margin: 10px; */
     text-decoration: none;
 }
 
