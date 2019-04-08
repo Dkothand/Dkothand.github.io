@@ -7,7 +7,7 @@ header {
     width: 90%;
     text-align: center;
     margin: auto;
-    margin-top: 30%;
+    margin-top: 20%;
     margin-bottom: 10%;
 }
 
@@ -76,6 +76,25 @@ ul {
     /* Center text in .card */
     text-align: center;
     
+}
+
+.nav-bar ul {
+    /* background-color goes here*/
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+}
+
+.nav-bar li {
+    display: inline-block;
+}
+
+.nav-bar li a {
+    /*inline block keeps padding inside nav but also on same line*/
+    display: inline-block;
+    /* padding makes whole area clickable*/
+    padding: 8px;
+    text-decoration: none;
 }
 
 @media (min-width: 800px) {
