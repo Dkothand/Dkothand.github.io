@@ -15,6 +15,8 @@
 // CSS
 // create 'hovered class' for cards
 
+// nav bar should have modal/scroll something dynamic that manipulates the DOM
+
 // JS 
 // create array to push results into
     // can check for duplicates this way
@@ -205,21 +207,58 @@ const parseData = (results) => {
     clearIds();
     console.log(results);
     
-    const contentNameArray = [];
-    // // loop through results array
-    // // content is an object
+    // const contentNameArray = [];
+    // // // loop through results array
+    // // // content is an object
 
-    // fills array with unique names
+    // // fills array with unique names
+    // for (let content of results) {
+    //     const contentName = content.name;
+    //     if (contentNameArray.indexOf(contentName) === -1) {
+    //         contentNameArray.push(contentName);
+    //     }
+    // }
+
+    // console.log(contentNameArray);
+
+    // makeUniqueContent(contentNameArray, results);
     for (let content of results) {
-        const contentName = content.name;
-        if (contentNameArray.indexOf(contentName) === -1) {
-            contentNameArray.push(contentName);
+        const contentName = content.name; //content name
+        const contentImg = content.picture; // link to image
+        
+    //     // array of stream objects
+        const locations = content.locations;
+        
+        // Build image tag of content image
+        const $img = $('<img>')
+        .attr('src', contentImg)
+        .attr('alt', contentName);
+
+        const $cardDiv = $('<div>').attr('class', 'card');
+        $cardDiv.append(`<h5>${contentName}</h5>`);
+
+        const $imgDiv = $('<div>').attr('class', 'content-img');
+        $imgDiv.append($img);
+        $cardDiv.append($imgDiv);
+
+        $cardDiv.append(`<h5>Streaming on:</h5>`);
+
+        const $ulStreamLinks = $('<ul>');
+
+        for (let stream of locations) {
+            const streamName = stream.display_name;
+            const streamURL = stream.url;
+
+
+            const $aStreamLink = $('<a>').attr('href', streamURL)
+                .text(streamName);
+            const $listItem = $('<li>').append($aStreamLink);            
+            $ulStreamLinks.append($listItem);
         }
+
+        $cardDiv.append($ulStreamLinks);
+        $('.container').append($cardDiv);
     }
-
-    console.log(contentNameArray);
-
-    makeUniqueContent(contentNameArray, results);
 }
 
 
@@ -234,9 +273,10 @@ const getApiData = () => {
         dataType: "json",
         data: {
             // search term, what user will input
-            term: searchTerm,
+            term: searchTerm
             // country, either us or uk
-            country: "us"
+            // none returns both
+            // country: "us"
         },
         beforeSend: (xhr) => {
             xhr.setRequestHeader(
