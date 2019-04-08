@@ -78,9 +78,18 @@ ul {
     
 }
 
-/* .nav-bar {
-    background-color goes here
-} */
+.nav-bar {
+    /* background-color goes here */
+    background-color: #fff;
+
+
+
+    /* Keep nav at top of page */
+    /* Throws off margins of header where they no longer push contenet down and just overlap the navbar */
+    /* position: fixed;
+    top: 0;
+    width: 100%; */
+}
 
 
 
@@ -111,15 +120,29 @@ ul {
 }
 
 @media (min-width: 800px) {
+    body {
+        background-color: red;
+    }
     /* two-columns */
     .card {
         flex-basis: 40%;
     }
+
+    header {
+        margin-top: 15%;
+    }
 }
 
 @media (min-width: 1300px) {
+    body {
+        background-color: blue;
+    }
     /* three columns */
     .card {
         flex-basis: 25%;
+    }
+
+    header {
+        margin-top: 10%;
     }
 }
