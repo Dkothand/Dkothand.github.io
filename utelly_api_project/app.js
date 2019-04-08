@@ -13,14 +13,8 @@
 /*************************************************************/
 // Current Task: 
 
-// Implement Modal on nav button
-
-
-
-
-
-
-
+// Style modal
+// Add text to modal content
 
 
 
@@ -169,40 +163,14 @@ const getInput = () => {
 //     }
 // }
 
-
-const $modal = $('#modal');
-const $modalClose = $('.close');
-
+// Modal show and hide functions
 const showModal = () => {
     $('.modal').css('display', 'block');
 }
 
 const hideModal = () => {
     $('.modal').css('display', 'none');
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
 
 // Testing parsing correct data
 const parseData = (results) => {
@@ -262,6 +230,7 @@ const parseData = (results) => {
 
 
             const $aStreamLink = $('<a>').attr('href', streamURL)
+                .attr('target', '_blank')
                 .text(streamName);
             const $listItem = $('<li>').append($aStreamLink);            
             $ulStreamLinks.append($listItem);
@@ -320,7 +289,7 @@ $(() => {
             hideModal();
         }
     })
-})
+});
 
 // () => {
 //     $('.card').toggle();
