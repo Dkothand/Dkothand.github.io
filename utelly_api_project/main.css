@@ -44,6 +44,7 @@ input[type=text] {
     flex-basis: 80%;
     padding: 20px;
     border: 0;
+    font-size: 22px;
 }
 
 /* Search Button*/
@@ -140,16 +141,11 @@ ul {
     /* two-columns */
     header {
         margin-top: 20%;
+        width: 70%;
     }
 
     .card {
         flex-basis: 40%;
-    }
-
-    .search-bar {
-        flex-basis: 50%;
-        margin: auto;
-        margin-top: 10%
     }
 
 }
@@ -158,16 +154,11 @@ ul {
     /* three columns */
     header {
         margin-top: 15%;
+        width: 50%;
     }
 
     .card {
         flex-basis: 25%;
-    }
-
-    .search-bar {
-        flex-basis: 50%;
-        margin: auto; 
-        margin-top: 5%;
     }
 
 }
