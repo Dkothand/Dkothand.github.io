@@ -3,6 +3,10 @@
     outline: 1px solid black;
 }
 
+body {
+    text-align: center;
+}
+
 header {
     width: 90%;
     text-align: center;
@@ -11,6 +15,7 @@ header {
     margin-bottom: 10%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* Name */
@@ -22,8 +27,8 @@ h1 {
 /* Description text*/
 h4 {
     font-size: 28px;
-    margin: auto;
-    flex-basis: 100%;
+    /* margin: auto;
+    flex-basis: 100%; */
 }
 
 h5 {
@@ -54,14 +59,15 @@ input[type=submit] {
     border: 0;
 }
 
+.results {
+    margin: 0 auto;
+}
+
+/* Images in div.card */
 img {
     width: 100%;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
 
 /* .container div - all div.cards populate inside*/
 .container {
@@ -77,33 +83,53 @@ ul {
 /* content div */
 /* display: none  to replicate content populating div.container */
 
-/*Comment out when testing api call*/
-.card, .results {
+/*Comment out to show cards*/
+/* .card, .results {
     display: none;
-}
+} */
 
 .card {
     /* display: none; */
     /* Fill 90% of .container width */
     flex-basis: 90%;
-
-    padding: 0 2%;
-
-    margin-top: 10%;
-
-    /* Center text in .card */
-    text-align: center;
     
+    padding: 0 2%;
+    
+    margin-top: 10%;
+    
+    /* Center text in .card */
+    /* text-align: center; */
+    
+}
+
+/* content name and Available headers */
+.card h5 {
+    margin-bottom: 1%;
+    text-align: left;
+}
+
+.card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.card li {
+    font-size: 20px;
+    margin-bottom: 1%;
+}
+
+.card li a {
+    text-decoration: none;
 }
 
 .nav-bar {
     /* background-color goes here */
-    background-color: #fff;
+    background-color: initial;
 
 
 
     /* Keep nav at top of page */
-    /* Throws off margins of header where they no longer push contenet down and just overlap the navbar */
+    /* Throws off margins of header where they no longer push content down and just overlap the navbar */
     /* position: fixed;
     top: 0;
     width: 100%; */
@@ -153,7 +179,7 @@ ul {
 @media (min-width: 1300px) {
     /* three columns */
     header {
-        margin-top: 15%;
+        margin-top: 10%;
         width: 50%;
     }
 
