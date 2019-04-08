@@ -174,11 +174,11 @@ const $modal = $('#modal');
 const $modalClose = $('.close');
 
 const showModal = () => {
-    $modal.css('display', 'block');
+    $('.modal').css('display', 'block');
 }
 
 const hideModal = () => {
-    $modal.css('display', 'none');
+    $('.modal').css('display', 'none');
 }
 
 
@@ -312,10 +312,14 @@ $(() => {
 
 
     // Modal listeners and handlers
-    $('#modal-about').on('click', () => {
-        $('.modal').css('display', 'block');
-    });
-    $modalClose.on('click', hideModal);
+    $('#modal-about').on('click', showModal);
+    $('.close').on('click', hideModal);
+    $(window).on('click', () => {
+        // console.log('window clicked');
+        if (event.target == modal) {
+            hideModal();
+        }
+    })
 })
 
 // () => {
