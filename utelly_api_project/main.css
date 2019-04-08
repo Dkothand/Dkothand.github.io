@@ -50,6 +50,9 @@ ul {
     /* Flexbox */
     display: flex;
     flex-wrap: wrap;
+    padding: 5%;
+    /* Centering */
+    justify-content: center;
 }
 
 /* content div */
@@ -64,11 +67,10 @@ ul {
     /* display: none; */
     /* Fill 90% of .container width */
     flex-basis: 90%;
-    /* Centering */
-    /* Note flexbox doesn't collapse margins, space between each card is 10% + 10% */
-    margin: 10% 5%;
 
     padding: 0 2%;
+
+    margin-top: 20px;
 
     /* Center text in .card */
     text-align: center;
