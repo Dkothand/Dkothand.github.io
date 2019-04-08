@@ -16,11 +16,6 @@
 // Implement Modal on nav button
 
 
-// add conditional for blank images
-    // add stock image in it's place
-
-    // 'bojack horseman' should return two cards with last one being not found image
-
 
 
 
@@ -175,6 +170,40 @@ const getInput = () => {
 // }
 
 
+const $modal = $('#modal');
+const $modalClose = $('.close');
+
+const showModal = () => {
+    $modal.css('display', 'block');
+}
+
+const hideModal = () => {
+    $modal.css('display', 'none');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Testing parsing correct data
 const parseData = (results) => {
     // Clears previous search results
@@ -280,6 +309,13 @@ const getApiData = () => {
 $(() => {
     // testing card appearance, change callback to 'getApiData' for normal functionality
     $('input[type=submit]').on('click', getApiData);
+
+
+    // Modal listeners and handlers
+    $('#modal-about').on('click', () => {
+        $('.modal').css('display', 'block');
+    });
+    $modalClose.on('click', hideModal);
 })
 
 // () => {
