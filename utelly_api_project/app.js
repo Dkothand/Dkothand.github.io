@@ -12,6 +12,26 @@
 
 /*************************************************************/
 // Current Task: 
+
+// Implement Modal on nav button
+
+
+// add conditional for blank images
+    // add stock image in it's place
+
+    // 'bojack horseman' should return two cards with last one being not found image
+
+
+
+
+
+
+
+
+
+
+
+
 // CSS
 // create 'hovered class' for cards
 
@@ -30,10 +50,6 @@
 
 // add stream icon for stream lists
 
-// add conditional for blank images
-    // add stock image in it's place
-
-    // 'bojack horseman' should return two cards with last one being not found image
 
 // add listener to cards for on:hover, toggle hovered class
     // content generation should append streams to hovered class
@@ -83,6 +99,7 @@
 
 const apiURL = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup";
 const apiKey = "52122fb71bmsh21d596050a233b7p18b88ajsnf76ae4c3d8e5";
+const imageNotFound = "https://dubsism.files.wordpress.com/2017/12/image-not-found.png";
 
 // Empties divs with rendered content
 const clearIds = () => {
@@ -98,85 +115,42 @@ const getInput = () => {
     return $input;
 }
 
-// const createCardContent = (results) => {
-
-        // this giant loop works when in parseData
-
-//     for (let content of results) {
-//         const contentName = content.name; //content name
-//         const contentImg = content.picture; // link to image
-        
-//     //     // array of stream objects
-//         const locations = content.locations;
-        
-//         // Build image tag of content image
-//         const $img = $('<img>')
-//         .attr('src', contentImg)
-//         .attr('alt', contentName);
-
-//         const $cardDiv = $('<div>').attr('class', 'card');
-//         $cardDiv.append(`<h5>${contentName}</h5>`);
-
-//         const $imgDiv = $('<div>').attr('class', 'content-img');
-//         $imgDiv.append($img);
-//         $cardDiv.append($imgDiv);
-
-//         $cardDiv.append(`<h5>Streaming on:</h5>`);
-
-//         const $ulStreamLinks = $('<ul>');
-
-//         for (let stream of locations) {
-//             const streamName = stream.display_name;
-//             const streamURL = stream.url;
-
-
-//             const $aStreamLink = $('<a>').attr('href', streamURL)
-//                 .text(streamName);
-//             const $listItem = $('<li>').append($aStreamLink);            
-//             $ulStreamLinks.append($listItem);
-//         }
-
-//         $cardDiv.append($ulStreamLinks);
-//         $('.container').append($cardDiv);
-//     }
-// }
-
-const renderObject = (object) => {
-    const contentName = object.name;
-    const contentImg = object.picture;
-    const contentLocations = object.locations;
-
-    // Build image tag of content image
-    const $img = $('<img>')
-    .attr('src', contentImg)
-    .attr('alt', contentName);
-
-    const $cardDiv = $('<div>').attr('class', 'card');
-    $cardDiv.append(`<h5>${contentName}</h5>`);
-
-    const $imgDiv = $('<div>').attr('class', 'content-img');
-    $imgDiv.append($img);
-    $cardDiv.append($imgDiv);
-
-    $cardDiv.append(`<h5>Streaming on:</h5>`);
-
-    const $ulStreamLinks = $('<ul>');
-
-    for (let stream of contentLocations) {
-        const streamName = stream.display_name;
-        const streamURL = stream.url;
-
-
-        const $aStreamLink = $('<a>').attr('href', streamURL)
-            .text(streamName);
-        const $listItem = $('<li>').append($aStreamLink);            
-        $ulStreamLinks.append($listItem);
-    }
-
-    $cardDiv.append($ulStreamLinks);
-    $('.container').append($cardDiv);
-}
 /*** Render unique content to DOM, trying to avoid repeats */
+// const renderObject = (object) => {
+//     const contentName = object.name;
+//     const contentImg = object.picture;
+//     const contentLocations = object.locations;
+
+//     // Build image tag of content image
+//     const $img = $('<img>')
+//     .attr('src', contentImg)
+//     .attr('alt', contentName);
+
+//     const $cardDiv = $('<div>').attr('class', 'card');
+//     $cardDiv.append(`<h5>${contentName}</h5>`);
+
+//     const $imgDiv = $('<div>').attr('class', 'content-img');
+//     $imgDiv.append($img);
+//     $cardDiv.append($imgDiv);
+
+//     $cardDiv.append(`<h5>Streaming on:</h5>`);
+
+//     const $ulStreamLinks = $('<ul>');
+
+//     for (let stream of contentLocations) {
+//         const streamName = stream.display_name;
+//         const streamURL = stream.url;
+
+
+//         const $aStreamLink = $('<a>').attr('href', streamURL)
+//             .text(streamName);
+//         const $listItem = $('<li>').append($aStreamLink);            
+//         $ulStreamLinks.append($listItem);
+//     }
+
+//     $cardDiv.append($ulStreamLinks);
+//     $('.container').append($cardDiv);
+// }
 
 // build array of unique names <-- done
 // function with array and results array
@@ -186,19 +160,19 @@ const renderObject = (object) => {
         // array.splice(indexOf(obj.name), 1)
 
 // takes two arrays
-const makeUniqueContent = (array, results) => {
-    // results array of objects
-    console.log(results)
-    for (content of results) {
-        console.log(content.name) // logs undefined
-        let presentInBoth = array.indexOf(content.name)
-        if (presentInBoth >= 0) {
-            // build div.card of current object
-            renderObject(content);
-            array.splice(presentInBoth, 1);
-        }
-    }
-}
+// const makeUniqueContent = (array, results) => {
+//     // results array of objects
+//     console.log(results)
+//     for (content of results) {
+//         console.log(content.name) // logs undefined
+//         let presentInBoth = array.indexOf(content.name)
+//         if (presentInBoth >= 0) {
+//             // build div.card of current object
+//             renderObject(content);
+//             array.splice(presentInBoth, 1);
+//         }
+//     }
+// }
 
 
 // Testing parsing correct data
@@ -230,9 +204,17 @@ const parseData = (results) => {
         const locations = content.locations;
         
         // Build image tag of content image
-        const $img = $('<img>')
-        .attr('src', contentImg)
-        .attr('alt', contentName);
+        const $img = $('<img>');
+        // .attr('src', contentImg)
+        // .attr('alt', contentName);
+
+        if (contentImg) {
+            $img.attr('src', contentImg)
+                .attr('alt', contentName);
+        } else {
+            $img.attr('src', imageNotFound)
+                .attr('alt', 'Image not found')
+        }
 
         const $cardDiv = $('<div>').attr('class', 'card');
         $cardDiv.append(`<h5>${contentName}</h5>`);
@@ -287,6 +269,7 @@ const getApiData = () => {
         // returning data
         // data = JSON.stringify(data);
         // console.log(data.results);
+        console.log(data);
         parseData(data.results);
     }, (error) => {
         console.error(error);
