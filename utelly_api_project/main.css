@@ -189,12 +189,18 @@ img {
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
-    margin: 25% auto; /* 40% from the top and centered */
+    margin: 25% auto; /* 25% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
     animation: animatetop;
     animation-duration: 0.5s;
+  }
+
+  .modal-body p {
+      line-height: 25px;
+      width: 80%;
+      margin: 0 auto;
   }
   
   /* The Close Button */
