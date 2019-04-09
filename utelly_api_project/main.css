@@ -248,4 +248,8 @@ img {
         flex-basis: 25%;
     }
 
+    .modal-content {
+        margin: 15% auto;
+    }
+
 }
