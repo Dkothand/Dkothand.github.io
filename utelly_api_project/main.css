@@ -162,7 +162,7 @@ img {
 .nav-bar li a {
     /*inline block keeps padding inside nav but also on same line*/
     display: inline-block;
-    /* padding makes whole area clickable*/
+    /* padding makes area clickable*/
     padding: 10px;
     /* margin: 10px; */
     text-decoration: none;
@@ -231,33 +231,37 @@ img {
 
 
 @media (min-width: 800px) {
-    /* two-columns */
     h1 {
         font-size: 82px;
     }
-
+    
     header {
         margin-top: 20%;
         width: 70%;
     }
-
+    
+    /* two-columns */
     .card {
         flex-basis: 40%;
+    }
+
+    .nav-bar li {
+        padding: 20px;
     }
 
 }
 
 @media (min-width: 1300px) {
-    /* three columns */
     h1 {
         font-size: 108px;
     }
-
+    
     header {
         margin-top: 10%;
         width: 50%;
     }
-
+    
+    /* three columns */
     .card {
         flex-basis: 25%;
     }
