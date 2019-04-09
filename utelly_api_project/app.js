@@ -292,7 +292,7 @@ const getApiData = () => {
 
 $(() => {
     // testing card appearance, change callback to 'getApiData' for normal functionality
-    $('#submit').on('click', getApiData);
+    $('button[type=submit]').on('click', getApiData);
 
     // listener for hover on generated cards
     // I don't think this will work, displaying one div over another while also keeping the structure of every card div is a tall order

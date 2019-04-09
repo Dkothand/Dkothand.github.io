@@ -47,19 +47,25 @@ h5 {
     margin-top: 10%;
 }
 
+
 input[type=text] {
     flex-basis: 80%;
     padding: 20px;
     border: 0;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 /* Search Button*/
-#submit {
+button {
     flex-basis: 20%;
     padding: 0;
     border: 0;
+    /* Font-Awesome icon */
+    font-size: 2.5em;
 }
+
+/* Icon alignment*/
+
 
 /* results header */
 .results {
