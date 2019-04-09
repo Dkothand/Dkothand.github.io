@@ -9,7 +9,12 @@ body {
     /* Remove default margin*/
     margin: 0;
     text-align: center;
+    /* Set font*/
     font-family: 'Roboto', sans-serif;
+    /* Set background-color*/
+    background-color: #393939;
+    /* Text color*/
+    color: #fff;
 }
 
 header {
@@ -25,8 +30,10 @@ header {
 
 /* Name */
 h1 {
+    color: #ff5a09;
     font-size: 64px;
     flex-basis: 100%;
+    text-shadow: 5px 5px 0px #6E6E6E;
 }
 
 h1, #brand {
@@ -65,6 +72,7 @@ input[type=text] {
 
 /* Search Button*/
 button {
+    background-color: #FF9900;
     flex-basis: 20%;
     padding: 0;
     border: 0;
@@ -160,7 +168,7 @@ img {
 /* From stackover flow: https://stackoverflow.com/questions/23706003/changing-nav-bar-color-after-scrolling*/
 
 .nav-bar.scrolled {
-    background-color: #000;
+    background-color: #F3843E;
     transition: background-color 300ms linear;
 }
 
