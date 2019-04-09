@@ -49,6 +49,7 @@ h4 {
 
 h5 {
     font-size: 32px;
+    margin: 1em;
 }
 
 /* Search Bar*/
@@ -133,7 +134,8 @@ img {
     margin-top: 10%;
     
     /* Center text in .card */
-    /* text-align: center; */    
+    /* text-align: center; */   
+    background-color: #6e6e6e; 
 }
 
 /* content name and Available headers */
@@ -154,6 +156,9 @@ img {
 
 .card li a {
     text-decoration: none;
+    color: #fff;
+    font-size: 1.25em;
+    font-weight: bold;
 }
 
 
@@ -225,10 +230,6 @@ img {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-
-  .modal-header h5 {
-      font-size: 32px;
   }
   
   /* Modal Content/Box */
