@@ -272,3 +272,9 @@ img {
     }
 
 }
+
+@media (min-width: 1600px) {
+    .card {
+        height: 600px;
+    }
+} 
