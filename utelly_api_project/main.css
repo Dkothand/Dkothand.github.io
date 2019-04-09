@@ -137,9 +137,9 @@ img {
 
     /* Keep nav at top of page */
     /* Throws off margins of header where they no longer push content down and just overlap the navbar */
-    /* position: fixed;
+    position: fixed;
     top: 0;
-    width: 100%; */
+    width: 100%;
 }
 
 .nav-bar ul {
@@ -247,6 +247,7 @@ img {
 
     .nav-bar li {
         padding: 20px;
+        font-size: 24px;
     }
 
 }
