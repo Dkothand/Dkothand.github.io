@@ -294,6 +294,13 @@ $(() => {
     // testing card appearance, change callback to 'getApiData' for normal functionality
     $('button[type=submit]').on('click', getApiData);
 
+    // Listener for enter keypress on text input box
+    $('input[type=text]').keypress((event) => {
+        if(event.which === 13) {
+            getApiData();
+        }
+    })
+
     // listener for hover on generated cards
     // I don't think this will work, displaying one div over another while also keeping the structure of every card div is a tall order
     // $('.card').hover(() => {
