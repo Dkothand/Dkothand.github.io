@@ -19,7 +19,7 @@
 
 // Add buttons to choose 'us' or 'uk' country for search
 
-
+// hitting enter key should submit also
 
 
 

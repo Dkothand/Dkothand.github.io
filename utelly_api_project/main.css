@@ -183,18 +183,22 @@ img {
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 25% auto; /* 40% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+    animation: animatetop;
+    animation-duration: 0.5s;
   }
   
   /* The Close Button */
   .close {
-    color: #aaa;
+    color: #000;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    animation: fadeout;
+    animation-duration: 0.5s;
   }
   
   .close:hover,
@@ -204,6 +208,11 @@ img {
     cursor: pointer;
   }
 
+/* Fade in animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
 /*************************************************/
 
 
