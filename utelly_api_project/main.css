@@ -126,6 +126,9 @@ img {
     text-decoration: none;
 }
 
+
+
+/*************************** Navbar *******************/
 .nav-bar {
     /* background-color goes here */
     background-color: initial;
@@ -138,8 +141,6 @@ img {
     top: 0;
     width: 100%; */
 }
-
-
 
 .nav-bar ul {
     /* Set width to mirror header, keeps content lined up with header content */
@@ -167,6 +168,9 @@ img {
     text-decoration: none;
 }
 
+/************************************************************/
+
+
 /****************************Modal*********************/
 /* Basic template from https://www.w3schools.com/howto/howto_css_modals.asp */
 .modal {
@@ -192,7 +196,7 @@ img {
     margin: 25% auto; /* 25% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 70%; /* Could be more or less, depending on screen size */
     animation: animatetop;
     animation-duration: 0.5s;
   }
@@ -209,8 +213,6 @@ img {
     float: right;
     font-size: 28px;
     font-weight: bold;
-    animation: fadeout;
-    animation-duration: 0.5s;
   }
   
   .close:hover,
