@@ -4,6 +4,8 @@
 }
 
 body {
+    /* Remove default margin*/
+    margin: 0;
     text-align: center;
 }
 
@@ -131,7 +133,7 @@ img {
 /*************************** Navbar *******************/
 .nav-bar {
     /* background-color goes here */
-    background-color: initial;
+    background-color: inherit;
 
 
 
@@ -140,6 +142,13 @@ img {
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+/* From stackover flow: https://stackoverflow.com/questions/23706003/changing-nav-bar-color-after-scrolling*/
+
+.nav-bar.scrolled {
+    background-color: #000;
+    transition: background-color 300ms linear;
 }
 
 .nav-bar ul {
@@ -160,6 +169,7 @@ img {
 }
 
 .nav-bar li a {
+    color: #fff;
     /*inline block keeps padding inside nav but also on same line*/
     display: inline-block;
     /* padding makes area clickable*/

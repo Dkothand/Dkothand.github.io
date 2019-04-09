@@ -13,15 +13,15 @@
 /*************************************************************/
 // Current Tasks: 
 
-// nav bar should have modal/scroll something dynamic that manipulates the DOM
-// Style modal
-// Add text to modal content
 
 // Add buttons to choose 'us' or 'uk' country for search
 
 // hitting enter key should submit also
 
+// add hover event listener to cards
 
+// Goal;
+// Spiderman: Homecoming should return one card with Amazon Prime and iTunes
 
 
 // CSS
@@ -45,8 +45,6 @@
 // add listener to cards for on:hover, toggle hovered class
     // content generation should append streams to hovered class
 
-
-//  - Implement name (StreamSift?)
 //  - change directory name to app name
 //  - Research fonts
     // Cabin and Lobster again?
@@ -155,6 +153,14 @@ const getInput = () => {
         // array.splice(indexOf(obj.name), 1)
 
 // takes two arrays
+// builds object out of array and results
+
+// object with name and array of location objects
+    // add to array
+// if results.name is object.name in array
+    // loop through results.location array and push each object into object.locations
+
+
 // const makeUniqueContent = (array, results) => {
 //     // results array of objects
 //     console.log(results)
@@ -185,10 +191,10 @@ const parseData = (results) => {
     console.log(results);
     
     // const contentNameArray = [];
-    // // // loop through results array
-    // // // content is an object
+    // // loop through results array
+    // // content is an object
 
-    // // fills array with unique names
+    // fills array with unique names
     // for (let content of results) {
     //     const contentName = content.name;
     //     if (contentNameArray.indexOf(contentName) === -1) {
@@ -199,6 +205,9 @@ const parseData = (results) => {
     // console.log(contentNameArray);
 
     // makeUniqueContent(contentNameArray, results);
+
+
+
     for (let content of results) {
         const contentName = content.name; //content name
         const contentImg = content.picture; // link to image
@@ -259,10 +268,10 @@ const getApiData = () => {
         dataType: "json",
         data: {
             // search term, what user will input
-            term: searchTerm
+            term: searchTerm,
             // country, either us or uk
             // none returns both, maybe not
-            // country: "us"
+            country: "us"
         },
         beforeSend: (xhr) => {
             xhr.setRequestHeader(
@@ -284,6 +293,22 @@ const getApiData = () => {
 $(() => {
     // testing card appearance, change callback to 'getApiData' for normal functionality
     $('input[type=submit]').on('click', getApiData);
+
+    // listener for hover on generated cards
+    // I don't think this will work, displaying one div over another while also keeping the structure of every card div is a tall order
+    // $('.card').hover(() => {
+        // display list
+    //     console.log('hovered!')
+    // }, () => {
+        // hide list
+    //     console.log('leave card')
+    // });
+
+    // listener for scroll, change navbar color
+    $(document).scroll(() => {
+        const $nav = $('.nav-bar');
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+    })
 
 
     // Modal listeners and handlers
