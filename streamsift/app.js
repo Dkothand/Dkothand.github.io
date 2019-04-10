@@ -96,6 +96,8 @@ let countryBtn = '';
 
 // Empties divs with rendered content and clears input text box
 const clearIds = () => {
+    // clears localStorage cache
+    localStorage.clear();
     $('.container').empty();
     $('input[type=text]').val('');
 }
@@ -185,6 +187,31 @@ const hideModal = () => {
     $('.modal').css('display', 'none');
 };
 
+const retrieveStorage = () => {
+    // get array of localStorage keys
+    const keys = Object.keys(localStorage);
+
+    for (let key of keys) {
+        const item = localStorage.getItem(key)
+        const $cardDiv = $('<div>').attr('class', 'card');
+        $cardDiv.append(item);
+        $('.container').append($cardDiv);
+    }
+}
+
+const $saveToLocalStorage = (id, object) => {
+    // key
+        // can't use contentName as there can be duplicates
+        // results[i].id <-- unique value
+        // id parameter
+    // value = $cardDiv.html() content
+    // localStorage.setItem(key, value)
+    const key = id;
+    const value = object.html();
+    console.log('localStorage entry', value);
+    localStorage.setItem(key, value);
+}
+
 // Testing parsing correct data
 const parseData = (results) => {
     // Clears previous search results
@@ -215,6 +242,9 @@ const parseData = (results) => {
         
     //     // array of stream objects
         const locations = content.locations;
+
+        // content.id => unique id for localStorage key
+        const id = content.id;
         
         // Build image tag of content image
         const $img = $('<img>');
@@ -260,6 +290,13 @@ const parseData = (results) => {
 
         $hoverDiv.append($ulStreamLinks);
         $cardDiv.append($hoverDiv);
+
+
+        // function that takes jQuery object and saves it to localStorage here
+        console.log('cardDiv object', $cardDiv);
+        $saveToLocalStorage(id, $cardDiv);
+
+
         $('.container').append($cardDiv);
     }
 }
@@ -299,17 +336,27 @@ const getApiData = () => {
 
 
 $(() => {
+
+    /* Check that we can use localStorage */
+    if(localStorage) {
+        console.log("Yippee! We can use localStorage awesomeness");
+    }
+    else {
+        console.log("Too bad, no localStorage for us");
+    }
+
+    // render localStorage items to DOM
+    retrieveStorage();
+
     // testing card appearance, change callback to 'getApiData' for normal functionality
     $('button[type=submit]').on('click', getApiData);
 
     $('#us').on('click', () => {
         countryBtn = 'us';
-        console.log(countryBtn)
     })
 
     $('#uk').on('click', () => {
         countryBtn = 'uk';
-        console.log(countryBtn)
     })
 
     // Listener for enter keypress on text input box
