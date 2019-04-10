@@ -391,11 +391,15 @@ $(() => {
 
 
     // Modal listeners and handlers
-    $('#modal-about').on('click', showModal);
+    $('#modal-about').on('click', (event) => {
+        // prevent href='#' moving page to top
+        event.preventDefault();
+        showModal();
+    });
     $('.close').on('click', hideModal);
     $(window).on('click', () => {
         // console.log('window clicked');
-        if (event.target == modal) {
+        if (event.target === modal) {
             hideModal();
         }
     })
