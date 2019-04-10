@@ -92,6 +92,7 @@
 const apiURL = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup";
 const apiKey = "52122fb71bmsh21d596050a233b7p18b88ajsnf76ae4c3d8e5";
 const imageNotFound = "https://dubsism.files.wordpress.com/2017/12/image-not-found.png";
+let countryBtn = '';
 
 // Empties divs with rendered content and clears input text box
 const clearIds = () => {
@@ -271,7 +272,7 @@ const getApiData = () => {
             term: searchTerm,
             // country, either us or uk
             // none returns both, maybe not
-            country: "us"
+            country: countryBtn || "us"
         },
         beforeSend: (xhr) => {
             xhr.setRequestHeader(
@@ -293,6 +294,16 @@ const getApiData = () => {
 $(() => {
     // testing card appearance, change callback to 'getApiData' for normal functionality
     $('button[type=submit]').on('click', getApiData);
+
+    $('#us').on('click', () => {
+        countryBtn = 'us';
+        console.log(countryBtn)
+    })
+
+    $('#uk').on('click', () => {
+        countryBtn = 'uk';
+        console.log(countryBtn)
+    })
 
     // Listener for enter keypress on text input box
     $('input[type=text]').keypress((event) => {
