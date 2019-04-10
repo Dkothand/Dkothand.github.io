@@ -112,7 +112,7 @@ button[type=submit] {
 }
 
 #us:focus, #uk:focus {
-    background-color: blue;
+    background-color: #3300ff;
 }
 
 
