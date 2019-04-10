@@ -191,6 +191,7 @@ img {
 
 .card-back {
     position: absolute;
+    /* Above .card but below navbar */ 
     z-index: 1;
     left: 0;
     top: 0;
@@ -218,6 +219,9 @@ img {
     position: fixed;
     top: 0;
     width: 100%;
+
+    /* Set above everything to prevent .cards from scrolling over */
+    z-index: 2;
 }
 
 /* From stackover flow: https://stackoverflow.com/questions/23706003/changing-nav-bar-color-after-scrolling*/
