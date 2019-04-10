@@ -148,6 +148,16 @@ img {
 } */
 
 .card {
+    /* Set position for hover effect */
+    position: relative;
+
+
+
+
+
+
+
+
     /* display: none; */
     /* Fill 90% of .container width */
     flex-basis: 90%;
@@ -186,6 +196,16 @@ img {
     color: #fff;
     font-size: 1.25em;
     font-weight: bold;
+}
+
+
+.card-back {
+    position: absolute;
+    left: 0;
+    top: 100px;
+    right: 0;
+    bottom: 0;
+    display: none;
 }
 
 
