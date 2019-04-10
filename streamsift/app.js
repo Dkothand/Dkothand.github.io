@@ -314,13 +314,9 @@ $(() => {
 
     // listener for hover on generated cards
     // I don't think this will work, displaying one div over another while also keeping the structure of every card div is a tall order
-    // $('.card').hover(() => {
-        // display list
-    //     console.log('hovered!')
-    // }, () => {
-        // hide list
-    //     console.log('leave card')
-    // });
+    $('.card').hover(() => {
+        $('.card-back').toggle();
+    });
 
     // listener for scroll, change navbar color
     $(document).scroll(() => {
