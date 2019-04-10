@@ -236,7 +236,13 @@ const parseData = (results) => {
         $imgDiv.append($img);
         $cardDiv.append($imgDiv);
 
-        $cardDiv.append(`<h5>Streaming on:</h5>`);
+        // remove this
+        // $cardDiv.append(`<h5>Streaming on:</h5>`);
+
+        // create div with class card-back
+        // append ul to card-back div
+        // append card-back div to $cardDiv
+        const $hoverDiv = $('<div>').attr('class', 'card-back');
 
         const $ulStreamLinks = $('<ul>');
 
@@ -252,7 +258,8 @@ const parseData = (results) => {
             $ulStreamLinks.append($listItem);
         }
 
-        $cardDiv.append($ulStreamLinks);
+        $hoverDiv.append($ulStreamLinks);
+        $cardDiv.append($hoverDiv);
         $('.container').append($cardDiv);
     }
 }
@@ -310,12 +317,17 @@ $(() => {
         if(event.which === 13) {
             getApiData();
         }
-    })
+    });
 
     // listener for hover on generated cards
-    // I don't think this will work, displaying one div over another while also keeping the structure of every card div is a tall order
-    $('.card').hover((event) => {
+    // not working because .cards are dynamically generated, need to bind to static parent and specify dynamic child
+
+    // binding to body, specify .card as dynamic child
+    $('body').on('mouseenter', '.card', (event) => {
         // toggles .card-back div
+        // console.log($(event.currentTarget))
+        $(event.currentTarget).children().eq(2).toggle();
+    }).on('mouseleave', '.card', (event) => {
         $(event.currentTarget).children().eq(2).toggle();
     });
 
