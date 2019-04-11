@@ -20,7 +20,7 @@ header {
     width: 90%;
     text-align: center;
     margin: auto;
-    margin-top: 25%;
+    margin-top: 15%;
     margin-bottom: 10%;
     display: flex;
     flex-wrap: wrap;
@@ -30,7 +30,7 @@ header {
 /* Name */
 h1 {
     color: #ff5a09;
-    font-size: 64px;
+    font-size: 4em;
     flex-basis: 100%;
     text-shadow: 5px 5px 0px #6E6E6E;
 }
@@ -41,7 +41,7 @@ h1, #brand {
 
 /* Description text*/
 h4 {
-    font-size: 28px;
+    font-size: 1.5em;
 }
 
 /* Card and modal headers */
@@ -65,7 +65,7 @@ input[type=text] {
     flex-basis: 80%;
     padding: 20px;
     border: 0;
-    font-size: 20px;
+    font-size: 1.5em;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 
@@ -78,7 +78,7 @@ button[type=submit] {
     padding: 0;
     border: 0;
     /* Font-Awesome icon */
-    font-size: 2.5em;
+    font-size: 1.5em;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -309,13 +309,23 @@ img {
 /*************************************************/
 
 /********** Media Queries *************************/
+@media (min-width: 500px){
+    button[type=submit] {
+        /* Font-Awesome icon */
+        font-size: 2em;
+    }
+}
 @media (min-width: 800px) {
     h1 {
-        font-size: 82px;
+        font-size: 7em;
     }
     
+    h4 {
+        font-size: 2.5em;
+    }
+
     header {
-        margin-top: 20%;
+        /* margin-top: 20%; */
         width: 70%;
     }
     
@@ -341,11 +351,15 @@ img {
         font-size: 24px;
         margin-right: 5%;
     }
+
+    .search-bar {
+        margin-top: 5%;
+    }
 }
 
 @media (min-width: 1300px) {
     h1 {
-        font-size: 108px;
+        font-size: 8em;
     }
     
     header {
