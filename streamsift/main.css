@@ -204,7 +204,7 @@ img {
 .card li a {
     text-decoration: none;
     color: #3300ff; /* Change */
-    /* font-size: 1.25em; */
+    font-size: 0.75em;
     font-weight: bold;
 }
 /********************************************/
@@ -348,6 +348,10 @@ img {
 
 /********** Media Queries *************************/
 @media (min-width: 500px){
+    .card li a {
+        font-size: 1em;
+    }
+
     /* Text Input */
     input[type=text], button[type=submit] {
         font-size: 1.5em;
@@ -379,6 +383,10 @@ img {
     /* two-columns */
     .card {
         flex-basis: 40%;
+    }
+
+    .card li a {
+        font-size: 1em;
     }
 
     .modal-content {
@@ -419,6 +427,10 @@ img {
         flex-basis: 25%;
     }
 
+    .card li a {
+        font-size: 1em;
+    }
+
     .modal-content {
         margin: 15% auto;
         width: 50%;
@@ -433,6 +445,9 @@ img {
     /* .card {
         height: 600px;
     } */
+    .card li a {
+        font-size: 1.25em;
+    }
 
     .results {
         font-size: 4em;
