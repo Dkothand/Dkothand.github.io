@@ -42,16 +42,15 @@ h1, #brand {
 /* Description text*/
 h4 {
     font-size: 28px;
-    /* margin: auto;
-    flex-basis: 100%; */
 }
 
+/* Card and modal headers */
 h5 {
     font-size: 32px;
     margin: 1em;
 }
 
-/* Search Bar*/
+/************** Search Bar *******************/
 
 /* Container for inputs */
 .search-bar {
@@ -59,17 +58,14 @@ h5 {
     flex-basis: 100%;
     display: flex;
     margin-top: 10%;
-    /* shadow corner doesn't curve */
-    /* box-shadow: 3px 3px 8px #6E6E6E; */
 }
 
-
+/* Text Input */
 input[type=text] {
     flex-basis: 80%;
     padding: 20px;
     border: 0;
     font-size: 20px;
-    /* border-bottom: 1px solid gray; */
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 
@@ -83,17 +79,14 @@ button[type=submit] {
     border: 0;
     /* Font-Awesome icon */
     font-size: 2.5em;
-    /* border-radius: 5px; */
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
+/* Container for country buttons */
 .country-btns {
-    /* Fill width of header */
     flex-basis: 100%;
-    /* Flex container for buttons*/
     display: flex;
-    /* Orient buttons */
     justify-content: space-around;
     padding: 10px;
 }
@@ -111,14 +104,18 @@ button[type=submit] {
     cursor: pointer;
 }
 
+/* After click */
 #us:focus, #uk:focus {
     background-color: #3300ff;
 }
 
+/***********************************************/
 
 /* results header */
 .results {
     margin: 0 auto;
+    font-size: 2em;
+    padding: 0 2%;
 }
 
 /* Images in div.card */
@@ -127,7 +124,7 @@ img {
 }
 
 
-/* .container div - all div.cards populate inside*/
+/* .container div - all cards populate inside */
 .container {
     /* Flexbox */
     display: flex;
@@ -138,40 +135,27 @@ img {
     align-items: center;
 }
 
-/* content div */
-/* display: none  to replicate content populating div.container */
-
-/*Comment out to show cards*/
-/* .card, .results {
-    display: none;
-} */
-
 .card {
     position: relative;
-
-    /* display: none; */
-    /* Fill 90% of .container width */
     flex-basis: 90%;
 
     /* Setting height and overflow sets cards to equal heights regardless of content, it works for now */
-    height: 500px;
+    height: 400px;
     overflow: auto;
     
     padding: 0 2%;
     
-    margin-top: 10%;
-    
-    /* Center text in .card */
-    /* text-align: center; */   
+    margin-top: 10%; 
     background-color: #6e6e6e; 
 }
 
-/* content name and Available headers */
+/* content name headers */
 .card h5 {
     margin-bottom: 1%;
     text-align: left;
 }
 
+/*************** Stream Link List ************/
 .card ul {
     list-style-type: none;
     padding: 0;
@@ -188,7 +172,9 @@ img {
     font-size: 1.25em;
     font-weight: bold;
 }
+/********************************************/
 
+/******* Hidden div for card.on(hover) *********/
 .card-back {
     position: absolute;
     /* Above .card but below navbar */ 
@@ -202,20 +188,17 @@ img {
 }
 
 .card-back ul {
-    margin: 25% auto;
+    margin: 50% auto;
 }
 
 
 
 /*************************** Navbar *******************/
 .nav-bar {
-    /* background-color goes here */
+    /* background-color same as body */
     background-color: inherit;
 
-
-
     /* Keep nav at top of page */
-    /* Throws off margins of header where they no longer push content down and just overlap the navbar */
     position: fixed;
     top: 0;
     width: 100%;
@@ -224,8 +207,7 @@ img {
     z-index: 2;
 }
 
-/* From stackover flow: https://stackoverflow.com/questions/23706003/changing-nav-bar-color-after-scrolling*/
-
+/* Toggle scrolled class */
 .nav-bar.scrolled {
     background-color: #F3843E;
     transition: background-color 300ms linear;
@@ -239,13 +221,11 @@ img {
     padding: 0;
     display: flex;
     justify-content: space-between;
-    /* padding: 5%; */
 }
 
 .nav-bar li {
     display: inline-block;
     padding: 10px;
-    /* margin-right: 10px; */
     font-size: 1.25em;
     font-weight: bold;
 
@@ -257,7 +237,6 @@ img {
     display: inline-block;
     /* padding makes area clickable*/
     padding: 10px;
-    /* margin: 10px; */
     text-decoration: none;
 }
 
@@ -291,6 +270,7 @@ img {
     animation-duration: 0.5s;
   }
 
+  /* Modal Text */
   .modal-body p {
       line-height: 30px;
       width: 80%;
@@ -320,7 +300,7 @@ img {
 }
 /*************************************************/
 
-
+/********** Media Queries *************************/
 @media (min-width: 800px) {
     h1 {
         font-size: 82px;
@@ -345,7 +325,6 @@ img {
         font-size: 24px;
         margin-right: 5%;
     }
-
 }
 
 @media (min-width: 1300px) {
@@ -366,11 +345,6 @@ img {
     .modal-content {
         margin: 15% auto;
     }
-
-    /* .nav-bar li {
-        padding: 10px;
-    } */
-
 }
 
 @media (min-width: 1600px) {
@@ -378,3 +352,4 @@ img {
         height: 600px;
     }
 } 
+/************************************************/
