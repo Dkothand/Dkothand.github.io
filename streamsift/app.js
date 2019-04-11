@@ -399,11 +399,13 @@ $(() => {
         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
     })
 
-    // Trying to implement slow scroll, not working
-    // $('#brand').on('click', () => {
-    //     console.log('clicked')
-    //     // $('html, body').animate({scrollTop:0}, 'slow');
-    // });
+    // Trying to implement slow scroll, https://stackoverflow.com/questions/8579643/how-to-scroll-up-or-down-the-page-to-an-anchor-using-jquery
+    $('#brand').on('click', (event) => {
+        // prevent href='#' moving page to top
+        event.preventDefault();
+        // console.log('clicked')
+        $('html, body').animate({scrollTop:0}, 'slow');
+    });
 
     // Modal listeners and handlers
     $('#modal-about').on('click', (event) => {
