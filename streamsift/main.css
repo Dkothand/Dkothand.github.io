@@ -156,6 +156,7 @@ img {
     display: flex;
     flex-direction: column;
     overflow: hidden; /* Need for child overflow to work*/
+    min-width: 0;
 }
 
 /* content name headers */
@@ -167,7 +168,8 @@ img {
     /* Clip long headers */
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    overflow-x: scroll;
+    /* text-overflow: ellipsis; */
 }
 
 .card h5:hover {
