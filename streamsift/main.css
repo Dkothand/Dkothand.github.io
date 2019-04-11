@@ -168,14 +168,21 @@ img {
 
     /* Clip long headers */
     white-space: nowrap;
-    overflow: hidden;
+    /* Doesn't do anything, I think overflow-x make it redundant*/
+    /* overflow: hidden; */
     overflow-x: scroll;
-    /* text-overflow: ellipsis; */
 }
 
-.card h5:hover {
-    overflow: visible;
+/* Hide scrollbar */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar */
+.card h5::-webkit-scrollbar {
+    display: none;
 }
+
+/* Idea, change text-overflow from ellipsis to visible on scroll */
+/* .card h5:hover {
+    overflow: visible;
+} */
 
 /* content img container */
 .content-img {
