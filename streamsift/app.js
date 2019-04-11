@@ -179,13 +179,13 @@ const getInput = () => {
 // }
 
 // Modal show and hide functions
-const showModal = () => {
-    $('.modal').css('display', 'block');
-};
+// const showModal = (num) => {
+//     $('.modal').eq(num).css('display', 'block');
+// };
 
-const hideModal = () => {
-    $('.modal').css('display', 'none');
-};
+// const hideModal = (num) => {
+//     $('.modal').eq(num).css('display', 'none');
+// };
 
 const retrieveStorage = () => {
     // get array of localStorage keys
@@ -379,6 +379,7 @@ $(() => {
     });
 
     // listener for scroll, change navbar color
+    /* From stackover flow: https://stackoverflow.com/questions/23706003/changing-nav-bar-color-after-scrolling*/
     $(document).scroll(() => {
         const $nav = $('.nav-bar');
         // rewrite possibly to 
@@ -394,13 +395,25 @@ $(() => {
     $('#modal-about').on('click', (event) => {
         // prevent href='#' moving page to top
         event.preventDefault();
-        showModal();
+        console.log($('.modal'));
+        $('.modal').eq(0).css('display', 'block');
     });
-    $('.close').on('click', hideModal);
-    $(window).on('click', () => {
+    $('#about').on('click', (event) => {
+        // prevent href='#' moving page to top
+        event.preventDefault();
+        $('.modal').eq(1).css('display', 'block');
+    });
+    $('.close1').on('click', () => {
+        $('.modal').eq(0).css('display', 'none');
+    });
+    $('.close2').on('click', () => {
+        $('.modal').eq(1).css('display', 'none');
+    });
+    $(window).on('click', (event) => {
         // console.log('window clicked');
-        if (event.target === modal) {
-            hideModal();
+        if (event.target.id === 'modal1' || event.target.id === 'modal2') {
+            // console.log($('.modal'));
+            $('.modal').css('display', 'none');
         }
     })
 });
