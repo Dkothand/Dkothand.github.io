@@ -379,13 +379,18 @@ $(() => {
     // not working because .cards are dynamically generated, need to bind to static parent and specify dynamic child
 
     // binding to body, specify .card as dynamic child
-    $('body').on('mouseenter', '.card', (event) => {
-        // toggles .card-back div
-        // console.log($(event.currentTarget))
+    // $('body').on('mouseenter', '.card', (event) => {
+    //     // toggles .card-back div
+    //     // console.log($(event.currentTarget))
+    //     $(event.currentTarget).children().eq(2).toggle();
+    // }).on('mouseleave', '.card', (event) => {
+    //     $(event.currentTarget).children().eq(2).toggle();
+    // });
+
+    // Listener for clicking generated content cards
+    $('body').on('click', '.card', (event) => {
         $(event.currentTarget).children().eq(2).toggle();
-    }).on('mouseleave', '.card', (event) => {
-        $(event.currentTarget).children().eq(2).toggle();
-    });
+    })
 
     // listener for scroll, change navbar color
     /* From stackover flow: https://stackoverflow.com/questions/23706003/changing-nav-bar-color-after-scrolling*/
