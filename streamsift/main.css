@@ -1,10 +1,6 @@
 /* Lobster & Roboto font */
 @import url('https://fonts.googleapis.com/css?family=Lobster|Roboto');
 
-* {
-    outline: 1px solid black;
-}
-
 body {
     /* Remove default margin*/
     margin: 0;
@@ -123,8 +119,10 @@ button[type=submit] {
 }
 
 /* Images in div.card */
+/* Fill div */
 img {
     width: 100%;
+    height: 100%;
 }
 
 
@@ -143,6 +141,8 @@ img {
 .card {
     position: relative;
     flex-basis: 90%;
+    /* border: 1px solid #fff; */
+    box-shadow: 2px 2px #fff;
 
     /* Setting height and overflow sets cards to equal heights regardless of content, it works for now */
     /* height: 400px;
@@ -161,6 +161,7 @@ img {
 
 /* content name headers */
 .card h5 {
+    border-bottom: 1px solid #ff9900;
     margin-left: 0;
     margin-right: 0;
     text-align: left;
@@ -187,6 +188,8 @@ img {
 /* content img container */
 .content-img {
     width: 100%;
+    /* height: 100%; */
+    border: 1px solid #ff9900;
     /* height: 200px; */
 }
 
