@@ -395,7 +395,7 @@ $(() => {
     $('#modal-about').on('click', (event) => {
         // prevent href='#' moving page to top
         event.preventDefault();
-        console.log($('.modal'));
+        // console.log($('.modal'));
         $('.modal').eq(0).css('display', 'block');
     });
     $('#about').on('click', (event) => {
@@ -417,8 +417,3 @@ $(() => {
         }
     })
 });
-
-// () => {
-//     $('.card').toggle();
-//      $('.results').toggle();
-// }
