@@ -4,113 +4,15 @@
 // Key is to pass API key into setRequestHeader in beforeSend function
 // I think it does the same thing as unirest.get().header("API Key here")
 
-// Link for more reading into getting unirest to work if I have time
+// Link for more reading into getting unirest to work
 // https://stackoverflow.com/questions/19059580/client-on-node-uncaught-referenceerror-require-is-not-defined
 // https://www.youtube.com/watch?v=G3soxqHAEd8
 //============================================================================
 // test url :"https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=bojack&country=uk"
-
-/*************************************************************/
-// Current Tasks: 
+/**************************************/
 
 
-// Add buttons to choose 'us' or 'uk' country for search
-
-// hitting enter key should submit also
-
-// add hover event listener to cards
-
-// Goal;
-// Spiderman: Homecoming should return one card with Amazon Prime and iTunes
-
-
-// CSS
-// create 'hovered class' for cards
-
-
-// JS 
-// create array to push results into
-    // can check for duplicates this way
-
-    // 'Entourage' should return one result <-- done
-
-/*********** Spiderman Homecoming is a duplicate, but the streams are different, find a way to merge location arrays **************************************/
-
-// do the same thing that I did for content.name for stream.display_name
-// put stream objects into new array and build card with hybrid results array and stream objects array
-
-// add stream icon for stream lists
-
-
-// add listener to cards for on:hover, toggle hovered class
-    // content generation should append streams to hovered class
-
-//  - change directory name to app name
-//  - Research fonts
-    // Cabin and Lobster again?
-    // text shadow
-
-// Sky blue background, white h1 text with big text shadow
-// search button probably a yellow or oranges
-// ----------------- done ------------------------
-//*************************************************************/
-
-// parseData
-
-// API data
-// data.results is array []
-// each element in array is an object
-// object properties:
-
-//id: identifier for that movie/tv show
-//locations: array [] of objects {}
-// each object is a streaming option
-// object properties:
-
-//display_name: Name of streaming service "Netflix"
-//icon: Image of streaming service
-//id: identifier of service
-//name: more specific name "NetflixUS"
-//url: url of movie/show on service site (location on Netflix site)
-
-//name: name of movie/tv show "Bojack Horseman"
-//picture: image of movie/tv show
-//weight: no idea what this is for
-
-// Content name: data.results[0].name
-// Content picture: data.results[0].picture
-// Content streaming (first location): data.results[0].locations[0].display_name
-// Content url (first location): data.results[0].locations[0].url
-
-/****NOTE*******/
-// If there isn't a picture available for item or service, array/object holds NULL value
-
-
-
-
-
-const apiURL = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup";
-const apiKey = "52122fb71bmsh21d596050a233b7p18b88ajsnf76ae4c3d8e5";
-const imageNotFound = "https://dubsism.files.wordpress.com/2017/12/image-not-found.png";
-let countryBtn = '';
-
-// Empties divs with rendered content and clears input text box
-const clearIds = () => {
-    // clears localStorage cache
-    localStorage.clear();
-    $('.container').empty();
-    $('input[type=text]').val('');
-}
-
-
-
-
-// Gets text entered into search bar
-const getInput = () => {
-    const $input = $('input[type=text]').val();
-    return $input;
-}
-
+// Doesn't work
 /*** Render unique content to DOM, trying to avoid repeats */
 // const renderObject = (object) => {
 //     const contentName = object.name;
@@ -187,8 +89,44 @@ const getInput = () => {
 //     $('.modal').eq(num).css('display', 'none');
 // };
 
+// const contentNameArray = [];
+// // loop through results array
+// // content is an object
+
+// fills array with unique names
+// for (let content of results) {
+//     const contentName = content.name;
+//     if (contentNameArray.indexOf(contentName) === -1) {
+//         contentNameArray.push(contentName);
+//     }
+// }
+
+// console.log(contentNameArray);
+
+// makeUniqueContent(contentNameArray, results);
+
+
+
+// API url and Key
+const apiURL = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup";
+const apiKey = "52122fb71bmsh21d596050a233b7p18b88ajsnf76ae4c3d8e5";
+
+// Placeholder image for when returned content is missing image
+const imageNotFound = "https://dubsism.files.wordpress.com/2017/12/image-not-found.png";
+
+// Save country selection
+let countryBtn = '';
+
+// Empties .container div, clears input text box, clears localStorage cache
+const resetFields = () => {
+    localStorage.clear();
+    $('.container').empty();
+    $('input[type=text]').val('');
+}
+
+
+// Get array of localStorage keys
 const retrieveStorage = () => {
-    // get array of localStorage keys
     const keys = Object.keys(localStorage);
 
     for (let key of keys) {
@@ -199,13 +137,9 @@ const retrieveStorage = () => {
     }
 }
 
-const $saveToLocalStorage = (id, object) => {
-    // key
-        // can't use contentName as there can be duplicates
-        // results[i].id <-- unique value
-        // id parameter
-    // value = $cardDiv.html() content
-    // localStorage.setItem(key, value)
+// Saves created .card div to localStorage
+// Takes id from content object and content object as arguments
+const saveToLocalStorage = (id, object) => {
     const key = id;
     const value = object.html();
     console.log('localStorage entry', value);
@@ -214,8 +148,8 @@ const $saveToLocalStorage = (id, object) => {
 
 // Testing parsing correct data
 const parseData = (results) => {
-    // Clears previous search results
-    clearIds();
+    // Clear previous search results
+    resetFields();
     console.log(results);
 
     // Display header based on ajax results
@@ -226,24 +160,6 @@ const parseData = (results) => {
         $('.results').css('display', 'block');
     };
     
-    // const contentNameArray = [];
-    // // loop through results array
-    // // content is an object
-
-    // fills array with unique names
-    // for (let content of results) {
-    //     const contentName = content.name;
-    //     if (contentNameArray.indexOf(contentName) === -1) {
-    //         contentNameArray.push(contentName);
-    //     }
-    // }
-
-    // console.log(contentNameArray);
-
-    // makeUniqueContent(contentNameArray, results);
-
-
-
     for (let content of results) {
         const contentName = content.name; //content name
         const contentImg = content.picture; // link to image
@@ -302,7 +218,7 @@ const parseData = (results) => {
 
         // function that takes jQuery object and saves it to localStorage here
         console.log('cardDiv object', $cardDiv);
-        $saveToLocalStorage(id, $cardDiv);
+        saveToLocalStorage(id, $cardDiv);
 
 
         $('.container').append($cardDiv);
@@ -310,20 +226,18 @@ const parseData = (results) => {
 }
 
 
-// API call with entered text as search term
+// AJAX request with user search parameters
 const getApiData = () => {
 
-    const searchTerm = getInput();
+    // Get user input
+    const $searchTerm = $('input[type=text]').val();
 
     $.ajax({
         url: apiURL,
         type: 'GET',
         dataType: "json",
         data: {
-            // search term, what user will input
-            term: searchTerm,
-            // country, either us or uk
-            // none returns both, maybe not
+            term: $searchTerm,
             country: countryBtn || "us"
         },
         beforeSend: (xhr) => {
@@ -332,10 +246,7 @@ const getApiData = () => {
             );
         }
     }).then((data) => {
-        // returning data
-        // data = JSON.stringify(data);
-        // console.log(data.results);
-        // console.log(data);
+        // results property has all content
         parseData(data.results);
     }, (error) => {
         console.error(error);
@@ -346,32 +257,29 @@ const getApiData = () => {
 $(() => {
 
     /* Check that we can use localStorage */
-    if(localStorage) {
-        console.log("Yippee! We can use localStorage awesomeness");
-    }
-    else {
-        console.log("Too bad, no localStorage for us");
-    }
+    // if(localStorage) {
+    //     console.log("Yippee! We can use localStorage awesomeness");
+    // }
+    // else {
+    //     console.log("Too bad, no localStorage for us");
+    // }
 
-    // render localStorage items to DOM
+    // Render localStorage items to DOM
     retrieveStorage();
 
-    // testing card appearance, change callback to 'getApiData' for normal functionality
+    // Listener for search button click
     $('button[type=submit]').on('click', getApiData);
 
-    // Listener for enter keypress on text input box
+    // Listener for Enter key keypress on search box
     $('input[type=text]').keypress((event) => {
         if(event.which === 13) {
             getApiData();
         }
     });
 
-    $('#us').on('click', () => {
-        countryBtn = 'us';
-    })
-
-    $('#uk').on('click', () => {
-        countryBtn = 'uk';
+    // Listener for country button click
+    $('button').on('click', (event) => {
+        countryBtn = event.target.id;
     })
 
 
@@ -379,6 +287,8 @@ $(() => {
     // not working because .cards are dynamically generated, need to bind to static parent and specify dynamic child
 
     // binding to body, specify .card as dynamic child
+
+    // Works, but changing to click for better UX, scrolling titles and mouseover isn't as good of an experience
     // $('body').on('mouseenter', '.card', (event) => {
     //     // toggles .card-back div
     //     // console.log($(event.currentTarget))
@@ -387,40 +297,38 @@ $(() => {
     //     $(event.currentTarget).children().eq(2).toggle();
     // });
 
-    // Listener for clicking generated content cards
+    // Listener for clicking generated content cards, toggles .card-back list of stream links
     $('body').on('click', '.card', (event) => {
-        $(event.currentTarget).children().eq(2).toggle();
-    })
+        const $contentCard = $(event.currentTarget).children().eq(2);
+        $contentCard.toggle();
+    });
 
-    // listener for scroll, change navbar color
+    // Listener for scroll, change navbar color
     /* From stackover flow: https://stackoverflow.com/questions/23706003/changing-nav-bar-color-after-scrolling*/
     $(document).scroll(() => {
         const $nav = $('.nav-bar');
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
         // rewrite possibly to 
         // ('scrolled', (event) => {
         // $(event.currentTarget).scrollTop()
         //})
         // should hopefully work
-        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+
+        // doesn't work
     })
 
-    // Trying to implement slow scroll, https://stackoverflow.com/questions/8579643/how-to-scroll-up-or-down-the-page-to-an-anchor-using-jquery
+    // Slow scroll on #brand click in navbar, https://stackoverflow.com/questions/8579643/how-to-scroll-up-or-down-the-page-to-an-anchor-using-jquery
     $('#brand').on('click', (event) => {
-        // prevent href='#' moving page to top
         event.preventDefault();
-        // console.log('clicked')
         $('html, body').animate({scrollTop:0}, 'slow');
     });
 
     // Modal listeners and handlers
     $('#modal-about').on('click', (event) => {
-        // prevent href='#' moving page to top
         event.preventDefault();
-        // console.log($('.modal'));
         $('.modal').eq(0).css('display', 'block');
     });
     $('#about').on('click', (event) => {
-        // prevent href='#' moving page to top
         event.preventDefault();
         $('.modal').eq(1).css('display', 'block');
     });
@@ -431,9 +339,7 @@ $(() => {
         $('.modal').eq(1).css('display', 'none');
     });
     $(window).on('click', (event) => {
-        // console.log('window clicked');
         if (event.target.id === 'modal1' || event.target.id === 'modal2') {
-            // console.log($('.modal'));
             $('.modal').css('display', 'none');
         }
     })
