@@ -279,16 +279,16 @@ img {
       text-align: left;
   }
   
-  /* The Close Button */
-  .close {
-    color: #000;
+  /* The Close Buttons */
+  span {
+    color: #fff;
     float: right;
-    font-size: 28px;
+    font-size: 2em;
     font-weight: bold;
   }
   
-  .close:hover,
-  .close:focus {
+  span:hover,
+  span:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
