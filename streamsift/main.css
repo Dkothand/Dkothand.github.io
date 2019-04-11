@@ -203,7 +203,7 @@ img {
 
 .card li a {
     text-decoration: none;
-    color: #fff; /* Change */
+    color: #3300ff; /* Change */
     /* font-size: 1.25em; */
     font-weight: bold;
 }
@@ -220,6 +220,8 @@ img {
     height: 100%;
     background-color: rgba(255, 255, 255, 0.6);
     display: none;
+    animation: animatetop;
+    animation-duration: 0.4s;
 }
 
 .card-back ul {
