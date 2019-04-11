@@ -272,11 +272,18 @@ img {
 
   /* Modal Text */
   .modal-body p {
-      line-height: 30px;
+      /* line-height: 80%; */
       width: 80%;
-      margin: 0 auto;
+      margin: auto;
+      margin-top: 5%;
+      font-size: 1.5em;
       font-weight: bold;
       text-align: left;
+  }
+
+  .modal-body a {
+      text-decoration: none;
+      color: #3300ff;
   }
   
   /* The Close Buttons */
@@ -317,6 +324,14 @@ img {
         flex-basis: 40%;
     }
 
+    .modal-content {
+        width: 60%;
+    }
+
+    #modal2 .modal-content {
+        width: 40%;
+    }
+
     .nav-bar ul {
         justify-content: flex-start;
     }
@@ -345,12 +360,21 @@ img {
 
     .modal-content {
         margin: 15% auto;
+        width: 50%;
     }
 }
 
 @media (min-width: 1600px) {
     .card {
         height: 600px;
+    }
+
+    .modal-content {
+        width: 40%;
+    }
+
+    #modal2 .modal-content {
+        width: 30%;
     }
 } 
 /************************************************/
