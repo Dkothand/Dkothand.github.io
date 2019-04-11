@@ -217,6 +217,14 @@ const parseData = (results) => {
     // Clears previous search results
     clearIds();
     console.log(results);
+
+    // Display header based on ajax results
+    if (results.length) {
+        $('.results').css('display', 'block');
+    } else {
+        $('.results').text('No results for that search.');
+        $('.results').css('display', 'block');
+    };
     
     // const contentNameArray = [];
     // // loop through results array
@@ -328,14 +336,7 @@ const getApiData = () => {
         // data = JSON.stringify(data);
         // console.log(data.results);
         // console.log(data);
-        if(data.results) {
-            $('.results').toggle();
-            parseData(data.results);
-        }
-        else {
-            $('.results').text('Sorry, no results found')
-            $('.results').toggle();
-        }
+        parseData(data.results);
     }, (error) => {
         console.error(error);
     })
@@ -358,6 +359,13 @@ $(() => {
     // testing card appearance, change callback to 'getApiData' for normal functionality
     $('button[type=submit]').on('click', getApiData);
 
+    // Listener for enter keypress on text input box
+    $('input[type=text]').keypress((event) => {
+        if(event.which === 13) {
+            getApiData();
+        }
+    });
+
     $('#us').on('click', () => {
         countryBtn = 'us';
     })
@@ -366,12 +374,6 @@ $(() => {
         countryBtn = 'uk';
     })
 
-    // Listener for enter keypress on text input box
-    $('input[type=text]').keypress((event) => {
-        if(event.which === 13) {
-            getApiData();
-        }
-    });
 
     // listener for hover on generated cards
     // not working because .cards are dynamically generated, need to bind to static parent and specify dynamic child
@@ -397,6 +399,11 @@ $(() => {
         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
     })
 
+    // Trying to implement slow scroll, not working
+    // $('#brand').on('click', () => {
+    //     console.log('clicked')
+    //     // $('html, body').animate({scrollTop:0}, 'slow');
+    // });
 
     // Modal listeners and handlers
     $('#modal-about').on('click', (event) => {
