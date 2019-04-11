@@ -60,12 +60,15 @@ h5 {
     margin-top: 10%;
 }
 
+/* Removing font-size keeps bar in header*/
+
+
 /* Text Input */
 input[type=text] {
     flex-basis: 80%;
     padding: 20px;
     border: 0;
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 
@@ -78,7 +81,7 @@ button[type=submit] {
     padding: 0;
     border: 0;
     /* Font-Awesome icon */
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -226,7 +229,8 @@ img {
 .nav-bar li {
     display: inline-block;
     padding: 10px;
-    font-size: 1.25em;
+    /* Commented out for 300px sizes, test at bigger widths */
+    /* font-size: 1.25em; */
     font-weight: bold;
 
 }
@@ -253,7 +257,7 @@ img {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    /* overflow: auto; Enable scroll if needed */
+    overflow: auto; /* Enable scroll if needed*/
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
@@ -310,18 +314,18 @@ img {
 
 /********** Media Queries *************************/
 @media (min-width: 500px){
-    button[type=submit] {
-        /* Font-Awesome icon */
-        font-size: 2em;
-    }
+    /* Text Input */
+    input[type=text], button[type=submit] {
+        font-size: 1.5em;
 }
+
 @media (min-width: 800px) {
     h1 {
         font-size: 7em;
     }
     
     h4 {
-        font-size: 2.5em;
+        font-size: 2.0em;
     }
 
     header {
@@ -348,7 +352,7 @@ img {
 
     .nav-bar li {
         /* padding: 20px; */
-        font-size: 24px;
+        font-size: 1.5em;
         margin-right: 5%;
     }
 
