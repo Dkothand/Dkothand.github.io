@@ -116,8 +116,9 @@ button[type=submit] {
 
 /* results header */
 .results {
+    display: none;
     margin: 0 auto;
-    font-size: 2em;
+    font-size: 1.25em;
     padding: 0 2%;
 }
 
@@ -317,6 +318,11 @@ img {
     /* Text Input */
     input[type=text], button[type=submit] {
         font-size: 1.5em;
+    }
+
+    .results {
+        font-size: 1.5em;
+    }
 }
 
 @media (min-width: 800px) {
@@ -326,6 +332,10 @@ img {
     
     h4 {
         font-size: 2.0em;
+    }
+
+    .results {
+        font-size: 2.25em;
     }
 
     header {
@@ -380,11 +390,19 @@ img {
         margin: 15% auto;
         width: 50%;
     }
+
+    .results {
+        font-size: 3em;
+    }
 }
 
 @media (min-width: 1600px) {
     .card {
         height: 600px;
+    }
+
+    .results {
+        font-size: 4em;
     }
 
     .modal-content {

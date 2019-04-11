@@ -327,8 +327,15 @@ const getApiData = () => {
         // returning data
         // data = JSON.stringify(data);
         // console.log(data.results);
-        console.log(data);
-        parseData(data.results);
+        // console.log(data);
+        if(data.results) {
+            $('.results').toggle();
+            parseData(data.results);
+        }
+        else {
+            $('.results').text('Sorry, no results found')
+            $('.results').toggle();
+        }
     }, (error) => {
         console.error(error);
     })
