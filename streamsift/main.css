@@ -148,7 +148,7 @@ img {
     /* height: 400px;
     overflow: auto; */
     
-    padding: 0 2%;
+    padding: 0 2% 2% 2%;
     
     margin-top: 10%; 
     background-color: #6e6e6e;
@@ -161,9 +161,10 @@ img {
 
 /* content name headers */
 .card h5 {
-    /* margin-bottom: 1%; */
+    margin-left: 0;
+    margin-right: 0;
     text-align: left;
-    flex-basis: 90%;
+    /* flex-basis: 90%; */
 
     /* Clip long headers */
     white-space: nowrap;
@@ -420,9 +421,9 @@ img {
 }
 
 @media (min-width: 1600px) {
-    .card {
+    /* .card {
         height: 600px;
-    }
+    } */
 
     .results {
         font-size: 4em;
