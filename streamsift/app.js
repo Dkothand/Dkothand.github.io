@@ -187,6 +187,11 @@ const $makeImg = (name, url) => {
     return $newImg;
 }
 
+const $makeDiv = (className) => {
+    const $newDiv = $('<div>');
+    $newDiv.attr('class', className);
+    return $newDiv;
+}
 
 // Renders media data to the DOM
 const parseData = (results) => {
@@ -210,10 +215,11 @@ const parseData = (results) => {
         const $img = $makeImg(contentName, contentImg);
 
 
-        const $cardDiv = $('<div>').attr('class', 'card');
+
+        const $cardDiv = $makeDiv('card');
         $cardDiv.append(`<h5>${contentName}</h5>`);
 
-        const $imgDiv = $('<div>').attr('class', 'content-img');
+        const $imgDiv = $makeDiv('content-img');
         $imgDiv.append($img);
         $cardDiv.append($imgDiv);
 
@@ -223,7 +229,7 @@ const parseData = (results) => {
         // create div with class card-back
         // append ul to card-back div
         // append card-back div to $cardDiv
-        const $hoverDiv = $('<div>').attr('class', 'card-back');
+        const $hoverDiv = $makeDiv('card-back');
 
         const $ulStreamLinks = $('<ul>');
 
