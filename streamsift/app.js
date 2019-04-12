@@ -193,12 +193,26 @@ const $makeDiv = (className) => {
     return $newDiv;
 }
 
+const $makeStreamList = (array) => {
+    const $newList = $('<ul>');
+    for (let stream of array) {
+        const streamName = stream.display_name;
+        const streamURL = stream.url;
+
+
+        const $aStreamLink = $('<a>').attr('href', streamURL)
+            .attr('target', '_blank')
+            .text(streamName);
+        const $listItem = $('<li>').append($aStreamLink);            
+        $newList.append($listItem);
+    }
+    return $newList;
+}
+
 // Renders media data to the DOM
 const parseData = (results) => {
     // Clear previous search results
     resetFields();
-    // console.log(results);
-
     
     // Check if results array is empty, render msg to DOM
     renderSearchHeader(results)
@@ -215,7 +229,6 @@ const parseData = (results) => {
         const $img = $makeImg(contentName, contentImg);
 
 
-
         const $cardDiv = $makeDiv('card');
         $cardDiv.append(`<h5>${contentName}</h5>`);
 
@@ -223,37 +236,18 @@ const parseData = (results) => {
         $imgDiv.append($img);
         $cardDiv.append($imgDiv);
 
-        // remove this
-        // $cardDiv.append(`<h5>Streaming on:</h5>`);
+        const $hiddenDiv = $makeDiv('card-back');
 
-        // create div with class card-back
-        // append ul to card-back div
-        // append card-back div to $cardDiv
-        const $hoverDiv = $makeDiv('card-back');
+        // const $ulStreamLinks = $('<ul>');
+        const $ulStreamLinks = $makeStreamList(locations)
 
-        const $ulStreamLinks = $('<ul>');
+        $hiddenDiv.append($ulStreamLinks);
+        $cardDiv.append($hiddenDiv);
 
-        for (let stream of locations) {
-            const streamName = stream.display_name;
-            const streamURL = stream.url;
-
-
-            const $aStreamLink = $('<a>').attr('href', streamURL)
-                .attr('target', '_blank')
-                .text(streamName);
-            const $listItem = $('<li>').append($aStreamLink);            
-            $ulStreamLinks.append($listItem);
-        }
-
-        $hoverDiv.append($ulStreamLinks);
-        $cardDiv.append($hoverDiv);
-
-
-        // function that takes jQuery object and saves it to localStorage here
-        console.log('cardDiv object', $cardDiv);
+        // Save jQuery object to localStorage
         saveToLocalStorage(id, $cardDiv);
 
-
+        // Append jQuery content object to body
         $('.container').append($cardDiv);
     }
 }
