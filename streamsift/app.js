@@ -144,6 +144,7 @@ const saveToLocalStorage = (key, object) => {
     localStorage.setItem(key, objectString);
 }
 
+
 // Functions for opening/closing modals
 // passes event and checks link id, opens corresponding modal
 // Can be refactored, find connection between $('.modal).eq() and link id
@@ -159,7 +160,19 @@ const showModal = (event) => {
 const hideModal = () => {
     $('.modal').css('display', 'none');
 }
+// end modal functions
 
+
+// Display header if search returned content or not
+const renderSearchHeader = (array) => {
+    if (array.length) {
+        $('.results').text('Here\'s what we found for you');
+        $('.results').css('display', 'block');
+    } else {
+        $('.results').text('No results for that search.');
+        $('.results').css('display', 'block');
+    };
+}
 
 // Creates img tag and attributes, passes stock image if no image link found
 const $makeImg = (name, url) => {
@@ -181,14 +194,9 @@ const parseData = (results) => {
     resetFields();
     // console.log(results);
 
-    // Display header based on ajax results
-    if (results.length) {
-        $('.results').text('Here\'s what we found for you');
-        $('.results').css('display', 'block');
-    } else {
-        $('.results').text('No results for that search.');
-        $('.results').css('display', 'block');
-    };
+    
+    // Check if results array is empty, render msg to DOM
+    renderSearchHeader(results)
     
     for (let content of results) {
         const contentName = content.name; // name
