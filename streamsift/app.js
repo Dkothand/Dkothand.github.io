@@ -146,6 +146,22 @@ const saveToLocalStorage = (id, object) => {
     localStorage.setItem(key, value);
 }
 
+// Functions for opening/closing modals
+// passes event and checks link id, opens corresponding modal
+// Can be refactored, find connection between $('.modal).eq() and link id
+const showModal = (event) => {
+    event.preventDefault();
+    if (event.target.id === 'about') {
+        $('.modal').eq(0).css('display', 'block');
+    } else if (event.target.id === 'contact') {
+        $('.modal').eq(1).css('display', 'block');
+    }
+}
+
+const hideModal = () => {
+    $('.modal').css('display', 'none');
+}
+
 // Testing parsing correct data
 const parseData = (results) => {
     // Clear previous search results
@@ -246,23 +262,14 @@ const getApiData = () => {
             );
         }
     }).then((data) => {
-        // results property has all content
+        // results property has media content
         parseData(data.results);
     }, (error) => {
         console.error(error);
     })
 }
 
-
 $(() => {
-
-    /* Check that we can use localStorage */
-    // if(localStorage) {
-    //     console.log("Yippee! We can use localStorage awesomeness");
-    // }
-    // else {
-    //     console.log("Too bad, no localStorage for us");
-    // }
 
     // Render localStorage items to DOM
     retrieveStorage();
@@ -323,24 +330,19 @@ $(() => {
         $('html, body').animate({scrollTop:0}, 'slow');
     });
 
-    // Modal listeners and handlers
-    $('#modal-about').on('click', (event) => {
-        event.preventDefault();
-        $('.modal').eq(0).css('display', 'block');
-    });
-    $('#about').on('click', (event) => {
-        event.preventDefault();
-        $('.modal').eq(1).css('display', 'block');
-    });
-    $('.close1').on('click', () => {
-        $('.modal').eq(0).css('display', 'none');
-    });
-    $('.close2').on('click', () => {
-        $('.modal').eq(1).css('display', 'none');
-    });
+    // Open modal on link click
+    $('a[href="#"]').on('click', (event) => {
+        showModal(event);
+    })
+
+    // Close modals when modal close button clicked
+    $('span').on('click', hideModal);
+
+    // Clicking outside of modal will close modal
     $(window).on('click', (event) => {
         if (event.target.id === 'modal1' || event.target.id === 'modal2') {
-            $('.modal').css('display', 'none');
+            // $('.modal').css('display', 'none');
+            hideModal();
         }
     })
 });
