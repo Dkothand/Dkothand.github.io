@@ -11,102 +11,6 @@
 // test url :"https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=bojack&country=uk"
 /**************************************/
 
-
-// Doesn't work
-/*** Render unique content to DOM, trying to avoid repeats */
-// const renderObject = (object) => {
-//     const contentName = object.name;
-//     const contentImg = object.picture;
-//     const contentLocations = object.locations;
-
-//     // Build image tag of content image
-//     const $img = $('<img>')
-//     .attr('src', contentImg)
-//     .attr('alt', contentName);
-
-//     const $cardDiv = $('<div>').attr('class', 'card');
-//     $cardDiv.append(`<h5>${contentName}</h5>`);
-
-//     const $imgDiv = $('<div>').attr('class', 'content-img');
-//     $imgDiv.append($img);
-//     $cardDiv.append($imgDiv);
-
-//     $cardDiv.append(`<h5>Streaming on:</h5>`);
-
-//     const $ulStreamLinks = $('<ul>');
-
-//     for (let stream of contentLocations) {
-//         const streamName = stream.display_name;
-//         const streamURL = stream.url;
-
-
-//         const $aStreamLink = $('<a>').attr('href', streamURL)
-//             .text(streamName);
-//         const $listItem = $('<li>').append($aStreamLink);            
-//         $ulStreamLinks.append($listItem);
-//     }
-
-//     $cardDiv.append($ulStreamLinks);
-//     $('.container').append($cardDiv);
-// }
-
-// build array of unique names <-- done
-// function with array and results array
-// for obj in results
-    // if obj.name is in array
-        // buildCard()
-        // array.splice(indexOf(obj.name), 1)
-
-// takes two arrays
-// builds object out of array and results
-
-// object with name and array of location objects
-    // add to array
-// if results.name is object.name in array
-    // loop through results.location array and push each object into object.locations
-
-
-// const makeUniqueContent = (array, results) => {
-//     // results array of objects
-//     console.log(results)
-//     for (content of results) {
-//         console.log(content.name) // logs undefined
-//         let presentInBoth = array.indexOf(content.name)
-//         if (presentInBoth >= 0) {
-//             // build div.card of current object
-//             renderObject(content);
-//             array.splice(presentInBoth, 1);
-//         }
-//     }
-// }
-
-// Modal show and hide functions
-// const showModal = (num) => {
-//     $('.modal').eq(num).css('display', 'block');
-// };
-
-// const hideModal = (num) => {
-//     $('.modal').eq(num).css('display', 'none');
-// };
-
-// const contentNameArray = [];
-// // loop through results array
-// // content is an object
-
-// fills array with unique names
-// for (let content of results) {
-//     const contentName = content.name;
-//     if (contentNameArray.indexOf(contentName) === -1) {
-//         contentNameArray.push(contentName);
-//     }
-// }
-
-// console.log(contentNameArray);
-
-// makeUniqueContent(contentNameArray, results);
-
-
-
 // API url and Key
 const apiURL = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup";
 const apiKey = "52122fb71bmsh21d596050a233b7p18b88ajsnf76ae4c3d8e5";
@@ -306,21 +210,6 @@ $(() => {
         countryBtn = event.target.id;
     })
 
-
-    // listener for hover on generated cards
-    // not working because .cards are dynamically generated, need to bind to static parent and specify dynamic child
-
-    // binding to body, specify .card as dynamic child
-
-    // Works, but changing to click for better UX, scrolling titles and mouseover isn't as good of an experience
-    // $('body').on('mouseenter', '.card', (event) => {
-    //     // toggles .card-back div
-    //     // console.log($(event.currentTarget))
-    //     $(event.currentTarget).children().eq(2).toggle();
-    // }).on('mouseleave', '.card', (event) => {
-    //     $(event.currentTarget).children().eq(2).toggle();
-    // });
-
     // Listener for clicking generated content cards, toggles .card-back list of stream links
     $('body').on('click', '.card', (event) => {
         const $contentCard = $(event.currentTarget).children().eq(2);
@@ -332,13 +221,6 @@ $(() => {
     $(document).scroll(() => {
         const $nav = $('.nav-bar');
         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-        // rewrite possibly to 
-        // ('scrolled', (event) => {
-        // $(event.currentTarget).scrollTop()
-        //})
-        // should hopefully work
-
-        // doesn't work
     })
 
     // Slow scroll on #brand click in navbar, https://stackoverflow.com/questions/8579643/how-to-scroll-up-or-down-the-page-to-an-anchor-using-jquery
