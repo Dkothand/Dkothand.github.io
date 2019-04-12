@@ -137,6 +137,7 @@ const retrieveStorage = () => {
     }
 }
 
+
 // Saves created .card div to localStorage
 // Takes id from content object and content object as arguments
 const saveToLocalStorage = (key, object) => {
@@ -157,6 +158,7 @@ const showModal = (event) => {
     }
 }
 
+
 const hideModal = () => {
     $('.modal').css('display', 'none');
 }
@@ -174,6 +176,7 @@ const renderSearchHeader = (array) => {
     };
 }
 
+
 // Creates img tag and attributes, passes stock image if no image link found
 const $makeImg = (name, url) => {
     const $newImg = $('<img>')
@@ -187,19 +190,20 @@ const $makeImg = (name, url) => {
     return $newImg;
 }
 
+
 const $makeDiv = (className) => {
     const $newDiv = $('<div>');
     $newDiv.attr('class', className);
     return $newDiv;
 }
 
+
+// Make <ul> of <li><a> stream names and links
 const $makeStreamList = (array) => {
     const $newList = $('<ul>');
     for (let stream of array) {
         const streamName = stream.display_name;
         const streamURL = stream.url;
-
-
         const $aStreamLink = $('<a>').attr('href', streamURL)
             .attr('target', '_blank')
             .text(streamName);
@@ -209,6 +213,7 @@ const $makeStreamList = (array) => {
     return $newList;
 }
 
+
 // Renders media data to the DOM
 const parseData = (results) => {
     // Clear previous search results
@@ -217,6 +222,7 @@ const parseData = (results) => {
     // Check if results array is empty, render msg to DOM
     renderSearchHeader(results)
     
+    // Each render each object in results array to DOM
     for (let content of results) {
         const contentName = content.name; // name
         const contentImg = content.picture; // image link
@@ -225,20 +231,20 @@ const parseData = (results) => {
         //id for localStorage key
         const id = content.id;
         
-        // Build image tag of content image
-        const $img = $makeImg(contentName, contentImg);
-
-
+        // Create div .card container for content
         const $cardDiv = $makeDiv('card');
         $cardDiv.append(`<h5>${contentName}</h5>`);
 
+        // Build image div with content image
+        const $img = $makeImg(contentName, contentImg);
         const $imgDiv = $makeDiv('content-img');
         $imgDiv.append($img);
         $cardDiv.append($imgDiv);
 
+        // Build div that toggles with .card on.click()
         const $hiddenDiv = $makeDiv('card-back');
 
-        // const $ulStreamLinks = $('<ul>');
+        // Build <ul> of stream names and links
         const $ulStreamLinks = $makeStreamList(locations)
 
         $hiddenDiv.append($ulStreamLinks);
