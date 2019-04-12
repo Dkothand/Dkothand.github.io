@@ -139,11 +139,9 @@ const retrieveStorage = () => {
 
 // Saves created .card div to localStorage
 // Takes id from content object and content object as arguments
-const saveToLocalStorage = (id, object) => {
-    const key = id;
-    const value = object.html();
-    console.log('localStorage entry', value);
-    localStorage.setItem(key, value);
+const saveToLocalStorage = (key, object) => {
+    const objectString = object.html();
+    localStorage.setItem(key, objectString);
 }
 
 // Functions for opening/closing modals
@@ -162,14 +160,30 @@ const hideModal = () => {
     $('.modal').css('display', 'none');
 }
 
-// Testing parsing correct data
+
+// Creates img tag and attributes, passes stock image if no image link found
+const $makeImg = (name, url) => {
+    const $newImg = $('<img>')
+    if (url) {
+    $newImg.attr('src', url)
+        .attr('alt', name);
+    } else {
+        $newImg.attr('src', imageNotFound)
+            .attr('alt', 'Image not found')
+    }
+    return $newImg;
+}
+
+
+// Renders media data to the DOM
 const parseData = (results) => {
     // Clear previous search results
     resetFields();
-    console.log(results);
+    // console.log(results);
 
     // Display header based on ajax results
     if (results.length) {
+        $('.results').text('Here\'s what we found for you');
         $('.results').css('display', 'block');
     } else {
         $('.results').text('No results for that search.');
@@ -177,27 +191,16 @@ const parseData = (results) => {
     };
     
     for (let content of results) {
-        const contentName = content.name; //content name
-        const contentImg = content.picture; // link to image
-        
-    //     // array of stream objects
-        const locations = content.locations;
+        const contentName = content.name; // name
+        const contentImg = content.picture; // image link
+        const locations = content.locations; // streams array
 
-        // content.id => unique id for localStorage key
+        //id for localStorage key
         const id = content.id;
         
         // Build image tag of content image
-        const $img = $('<img>');
-        // .attr('src', contentImg)
-        // .attr('alt', contentName);
+        const $img = $makeImg(contentName, contentImg);
 
-        if (contentImg) {
-            $img.attr('src', contentImg)
-                .attr('alt', contentName);
-        } else {
-            $img.attr('src', imageNotFound)
-                .attr('alt', 'Image not found')
-        }
 
         const $cardDiv = $('<div>').attr('class', 'card');
         $cardDiv.append(`<h5>${contentName}</h5>`);
