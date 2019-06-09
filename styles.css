@@ -4,7 +4,7 @@ a {
 }
 
 article {
-	max-width: 1000px;
+	width: 80%;
 	color: white;
 	margin: 15% auto;
 	font-family: 'Cabin', sans-serif;
@@ -22,9 +22,21 @@ button {
 	color: black;
 	font-size: 20px;
 	border: 0;
+	border-radius: 5px;
 	padding: 10px 22px;
 	margin: 10px 30px;
 	cursor: pointer;
+}
+
+embed {
+	width: 100%;
+	height: 800px;
+	outline: 1px solid #fff;
+}
+
+footer {
+	text-align: center;
+	color: #fff;
 }
 
 h1, h2 {
@@ -41,20 +53,26 @@ h2 {
 	font-size: 42px;
 }
 
+h3 {
+	font-size: 36px;
+}
+
 header {
 	color: white;
 	text-align: center;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-	background: url(images/background.jpg);
+	background: 
+	linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+	url('https://images.unsplash.com/photo-1556610626-f0ecb76ecca9');
 	background-size: cover;
 }
 
-img {
+header > img {
 	max-width: 300px;
 	max-height: 300px;
 	margin: 5% auto;
 	border: 7px solid white;
-	border-radius: 25%;
+	border-radius: 50%;
 }
 
 li {
@@ -65,6 +83,10 @@ li {
 p {
 	line-height: 4rem;
 	font-size: 28px;
+}
+
+section > a button {
+	margin: 0 auto;
 }
 
 /* Icons */
@@ -107,7 +129,10 @@ i.fab {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
+  border-radius: 5px;
   width: 50%; /* Could be more or less, depending on screen size */
+  animation-name: animatetop;
+  animation-duration: 0.4s
 }
 
 /* The Close Button */
@@ -123,6 +148,21 @@ i.fab {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.project-img {
+	width: 100%;
+	height: auto;
+	outline: 1px solid #fff;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+@keyframes animatetop {
+	from {top: -300px; opacity: 0}
+	to {top: 0; opacity: 1}
 }
 
 @media (max-width: 500px) {

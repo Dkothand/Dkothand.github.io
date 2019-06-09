@@ -16,17 +16,17 @@
 <body>
 
 	<header>
-		<img src="images/deva.jpg" alt="devakothandapany">
+		<img src="./assets/images/deva.jpg" alt="devakothandapany">
 		<br>
-		<h1>Hi, I'm Deva. Let's connect!</h1>
+		<h1>Hi, I'm Deva. I write code.</h1>
 
 		<!-- Buttons jump to id passed to jumpTo() -->
 		<button onclick="jumpTo('aboutMe')">About Me</button>
-		<button onclick="jumpTo('journey')">Journey</button>
-		<button onclick="jumpTo('personal')">Personal</button>
+		<button onclick="jumpTo('projects')">Projects</button>
+		<button onclick="jumpTo('resume')">Resume</button>
 
 		<!-- Triggers modal -->
-		<button id="connect">Contact</button>
+		<button id="connect">Connect</button>
 	</header>
 
 	<!-- The Modal -->
@@ -57,25 +57,74 @@
 	</div> 
 
 	<article id="aboutMe">
-		<h2>Who am I?</h2>
+		<h2>My Story</h2>
 		<p>
-			Hello there! My name is Deva Kothandapany. I'm 28 years old and currently working to break into software development industry. About a year ago, I was researching programs for a Master's in Bioinformatics. During that time, I discovered Python and with it, a passion for programming. It was at that time that I decided to make the switch from pursuing a Master's to starting a career in programming!
+			Hello there! My name is Deva Kothandapany. About a year ago, I was researching programs for a Master's in Bioinformatics. During that time, I discovered Python and with it, a passion for programming. After that, I decided to make the switch from pursuing a Master's to starting a career in programming!
+		</p>
+		<p>
+			I've recently completed General Assembly's Software Engineering Immersive Bootcamp; a three month long course designed build skills in programming, web development, and computer science. My current goal is to continue building projects in order to learn and hone my skills. 
+		</p>
+		<p>
+			When I'm not coding, I enjoy keeping myself active through going to the gym, training Brazilian Jiujitsu, and coaching people on how to throw an axe. Ask me about how I got a blind woman to hit a bullseye! 
 		</p>
 	</article>
 
-	<article id="journey">
-		<h2>My journey so far</h2>
-		<p>
-			Over the past year I was able to complete CS50: Harvard's Intro to Computer Science that's available online. It was a very challenging course that exposed me to the basics of computer science and also a variety of languages. The first half of the program was taught in C, the latter half introduced newer languages such as Python and Javascript. You can check out my solutions to the 2018 problem sets on my Github(Click the "Connect!" button under my face!). In addition, I have been working on personal projects as well as lessons on freeCodeCamp.org to continue to grow and develop my skills in writing code. My goal is to make sure I'm using best practices when coding and to fill my Github with projects to show off my skills to potential employers.
-		</p>
+	<article id="projects">
+		<h2>My Projects</h2>
+		<section>
+			<h3>StreamSift</h3>
+			<img class="project-img" src="./assets/images/dkothand.github.io_streamsift_.png"/>
+			<p>Web application that allows users to search for where movies and TV shows are currently streaming - User search queries Utelly API and results are rendered dynamically to browser via jQuery. Technologies: <span class="underline">Javascript, jQuery, Utelly API, HTML5, CSS3</span></p>
+			<a href="https://dkothand.github.io/streamsift/" target='_blank'>
+				<button>Visit</button>
+			</a>
+			<a href="https://github.com/Dkothand/Dkothand.github.io/tree/master/streamsift" target='_blank'>
+				<button>See the Code</button>
+			</a>
+		</section>
+		<section>
+			<h3>Sensei YouTube</h3>
+			<img class="project-img" src="./assets/images/sensei-yt.herokuapp.com_techniques.png"/>
+			<p> A full CRUD app that allows users to add, watch, and comment on Jiujitsu videos found on YouTube. Authorization set up to allow users to create accounts with password encryption in order to leave comments on videos. Implemented RESTful backend server that allows users to favorite videos and save them to their account. Technologies: <span class="underline">Javascript, jQuery, Express, MongoDB, Mongoose, Heroku, Materialize CSS</span></p>
+			<a href="https://sensei-yt.herokuapp.com/" target='_blank'>
+				<button>Visit</button>
+			</a>
+			<a href="https://github.com/Dkothand/Sensei-YT" target='_blank'>
+				<button>See the Code</button>
+			</a>
+		</section>
+		<section>
+			<h3>JobHunters</h3>
+			<img class="project-img" src="./assets/images/jobshunter.herokuapp.com_.png"/>
+			<p> A group project built for users to log in and save jobs that they find interesting. Users can selet whether or not they have applied to the job after adding it to their profile. Technologies: <span class="underline">React, Express, MongoDB, Mongoose, Heroku, Materialize CSS</span></p>
+			<a href="https://jobshunter.herokuapp.com/" target='_blank'>
+				<button>Visit</button>
+			</a>
+			<a href="https://github.com/Dkothand/job-tracker-front-end" target='_blank'>
+				<button>See the Code</button>
+			</a>
+		</section>
+		<section>
+			<h3>Puppr</h3>
+			<img class="project-img" src="./assets/images/puppr-client.herokuapp.com_home.png"/>
+			<p> Final project for General Assembly's Software Engineering Immersive bootcamp. App built for users to create profiles of their dogs and find other dogs in their area for play-dates. User authentication and authorization configured with a full back-end. Technologies: <span class="underline">React, Ruby on Rails, PostgreSQL, Heroku, Materialize CSS</span></p>
+			<a href="https://puppr-client.herokuapp.com/" target='_blank'>
+				<button>Visit</button>
+			</a>
+			<a href="https://github.com/Dkothand/Puppr_client" target='_blank'>
+				<button>See the Code</button>
+			</a>
+		</section>
 	</article>
 
-	<article id="personal">
-		<h2>When I'm not coding...</h2>
-		<p>
-			I consider myself a perpetual student. I love to learn new things! When I'm not reading a new book or trying to bake a loaf of bread, I enjoy working out and keeping myself healthy. Ask me about Brazilian Jiujitsu!
-		</p>
+	<article id="resume">
+		<h2>My Resume</h2>
+		<embed view="Fit" src="./assets/Deva_Kothandapany_Resume.pdf"/>
 	</article>
+	
+	<footer>
+		<h2>Thanks for stopping by!</h2>
+	</footer>
 
 <!-- Migrated JS to <script> tag due to Gmail blocking .js files from being sent as attachments -->
 <script type="text/javascript">
